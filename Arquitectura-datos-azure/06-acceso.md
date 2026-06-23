@@ -1,28 +1,33 @@
 # 📈 Capa de Acceso
 
-## 🎯 ¿Qué hace esta capa?
-Permite a los usuarios consumir los datos mediante dashboards, APIs y aplicaciones.
+## 🎯 Objetivo
+📌 Permitir que usuarios consuman los datos mediante dashboards, APIs y aplicaciones.
+
+## 📊 Flujo
+📊 MODELADO → 📈 ACCESO → 👤 USUARIOS
 
 ---
 
-## 🟢 Tecnologías Open Source
+## 🟢 Open Source
 - Metabase
 - Apache Superset
 - Grafana
 - Redash
 
----
-
-## 🟠 Tecnologías de Pago
+## 🟠 Pago
 - Tableau
 - Qlik Sense
 - Looker
 - MicroStrategy
-
----
 
 ## 🔵 Azure / Microsoft
 - Power BI
 - Power Apps
 - Azure API Management
 - Azure App Service
+
+---
+
+## 💡 Ejemplo de uso
+- Dashboards de ventas
+- Reportes ejecutivos
