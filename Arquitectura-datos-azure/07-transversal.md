@@ -1,27 +1,26 @@
 # 🔐 Capa Transversal: Gobernanza, Seguridad y Observabilidad
 
-## 🎯 ¿Qué hace esta capa?
-Asegura la seguridad, calidad, trazabilidad y monitoreo de todos los datos.
+## 🎯 Objetivo
+📌 Garantizar seguridad, control, monitoreo y calidad de los datos en toda la arquitectura.
+
+## 📊 Alcance
+🔐 Aplica a TODAS las capas
 
 ---
 
-## 🟢 Tecnologías Open Source
+## 🟢 Open Source
 - OpenMetadata
 - Apache Atlas
 - Prometheus
 - Grafana
 - OpenTelemetry
 
----
-
-## 🟠 Tecnologías de Pago
+## 🟠 Pago
 - Collibra
 - Alation
 - Datadog
 - Splunk
 - Dynatrace
-
----
 
 ## 🔵 Azure / Microsoft
 - Microsoft Purview
@@ -29,3 +28,10 @@ Asegura la seguridad, calidad, trazabilidad y monitoreo de todos los datos.
 - Azure Monitor
 - Azure Key Vault
 - Microsoft Entra ID
+
+---
+
+## 💡 Ejemplo de uso
+- Control de acceso a datos
+- Auditoría de información
+- Monitoreo del sistema
