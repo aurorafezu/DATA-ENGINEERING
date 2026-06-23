@@ -1,26 +1,25 @@
 # ⚙️ Capa de Procesamiento
 
-## 🎯 ¿Qué hace esta capa?
-Transforma, limpia y enriquece los datos para hacerlos útiles.
+## 🎯 Objetivo
+📌 Transformar, limpiar y enriquecer los datos.
+
+## 📊 Flujo
+📦 RAW → ⚙️ PROCESAMIENTO → 📊 MODELADO
 
 ---
 
-## 🟢 Tecnologías Open Source
+## 🟢 Open Source
 - Apache Spark
 - Apache Flink
 - Apache Airflow
 - dbt Core
 - Python
 
----
-
-## 🟠 Tecnologías de Pago
+## 🟠 Pago
 - Databricks
 - Alteryx
 - SAS
 - Informatica Data Engineering
-
----
 
 ## 🔵 Azure / Microsoft
 - Azure Databricks
@@ -28,3 +27,9 @@ Transforma, limpia y enriquece los datos para hacerlos útiles.
 - Azure Functions
 - Azure HDInsight
 - Microsoft Fabric Data Engineering
+
+---
+
+## 💡 Ejemplo de uso
+- Limpieza de datos duplicados
+- Transformación de datos en tablas analíticas
