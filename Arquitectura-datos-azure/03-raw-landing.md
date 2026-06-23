@@ -1,28 +1,34 @@
 # 📦 Capa RAW / Landing
 
-## 🎯 ¿Qué hace esta capa?
-Almacena los datos en su estado original sin transformaciones.
+## 🎯 Objetivo
+📌 Almacenar los datos en su estado original sin transformaciones.
+
+## 📊 Flujo
+🚀 INGESTA → 📦 RAW → ⚙️ PROCESAMIENTO
 
 ---
 
-## 🟢 Tecnologías Open Source
+## 🟢 Open Source
 - Hadoop HDFS
 - Delta Lake
 - Apache Iceberg
 - Apache Hudi
+- MinIO
 
----
-
-## 🟠 Tecnologías de Pago
+## 🟠 Pago
 - Snowflake
 - Databricks Lakehouse
-- Cloudera
+- Cloudera Data Platform
 - Dell ECS
-
----
 
 ## 🔵 Azure / Microsoft
 - Azure Data Lake Storage Gen2
 - Azure Blob Storage
 - Microsoft OneLake
 - Azure Storage Account
+
+---
+
+## 💡 Ejemplo de uso
+- Guardar logs de aplicaciones
+- Almacenar datos históricos sin modificar
