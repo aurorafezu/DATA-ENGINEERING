@@ -1,26 +1,35 @@
 # 📈 Capa de Acceso
 
 ## 🎯 Objetivo
-📌 Permitir que usuarios consuman los datos mediante dashboards, APIs y aplicaciones.
-
-## 📊 Flujo
-📊 MODELADO → 📈 ACCESO → 👤 USUARIOS
+Permitir a los usuarios consumir los datos mediante dashboards, reportes y aplicaciones.
 
 ---
 
-## 🟢 Open Source
+## ⚙️ Funciones principales
+- Visualización de datos
+- Creación de dashboards
+- APIs de consumo
+- Reportes ejecutivos
+
+---
+
+## 🌐 Tecnologías Open Source
 - Metabase
 - Apache Superset
 - Grafana
 - Redash
 
-## 🟠 Pago
+---
+
+## 💰 Tecnologías de Pago
 - Tableau
 - Qlik Sense
 - Looker
 - MicroStrategy
 
-## 🔵 Azure / Microsoft
+---
+
+## ☁️ Azure / Microsoft
 - Power BI
 - Power Apps
 - Azure API Management
@@ -28,6 +37,12 @@
 
 ---
 
-## 💡 Ejemplo de uso
-- Dashboards de ventas
-- Reportes ejecutivos
+## 📝 Ejemplo Real
+- Dashboard de ventas
+- Reporte financiero
+- KPI de clientes
+
+---
+
+## 🔑 Idea Clave
+Es la capa donde el usuario final consume los datos.
