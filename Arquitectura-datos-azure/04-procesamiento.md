@@ -1,52 +1,38 @@
-# ⚙️ Capa de Procesamiento
+# ⚙️ Capa de Procesamiento (Transformación)
 
-## 🎯 Objetivo
-Limpiar, transformar y enriquecer los datos para convertirlos en información útil.
-
----
-
-## ⚙️ Funciones principales
-- Limpieza de datos
-- Eliminación de duplicados
-- Transformaciones ETL/ELT
-- Enriquecimiento de datos
-- Automatización de pipelines
+## 🎯 Contexto
+Los datos crudos se convierten en información útil para el negocio.
 
 ---
 
-## 🌐 Tecnologías Open Source
+## 🔄 ¿Qué ocurre aquí?
+Se limpian errores, duplicados y se organizan los datos.
+
+---
+
+## 🧪 Ejemplo real
+- Eliminación de pedidos duplicados
+- Corrección de precios erróneos
+- Unión de datos de clientes y compras
+
+---
+
+## 🟢 Open Source
 - Apache Spark
-- Apache Flink
-- Apache Airflow
 - dbt Core
-- Python
+- Airflow
 
----
-
-## 💰 Tecnologías de Pago
+## 🟠 Pago
 - Databricks
 - Alteryx
 - SAS
-- Informatica Data Engineering
-
----
 
 ## ☁️ Azure / Microsoft
 - Azure Databricks
 - Azure Synapse Analytics
 - Azure Functions
-- Azure HDInsight
-- Microsoft Fabric Data Engineering
 
 ---
 
-## 📝 Ejemplo Real
-- Limpieza de datos duplicados
-- Normalización de formatos
-- Unión de fuentes distintas
-- Cálculo de métricas
-
----
-
-## 🔑 Idea Clave
-Convierte datos crudos en información lista para análisis.
+## 🔑 Idea clave
+Convierte datos desordenados en información lista para análisis.
