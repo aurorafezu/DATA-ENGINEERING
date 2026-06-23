@@ -1,27 +1,36 @@
 # 📦 Capa RAW / Landing
 
 ## 🎯 Objetivo
-📌 Almacenar los datos en su estado original sin transformaciones.
-
-## 📊 Flujo
-🚀 INGESTA → 📦 RAW → ⚙️ PROCESAMIENTO
+Almacenar los datos en su estado original sin transformaciones para conservar su integridad.
 
 ---
 
-## 🟢 Open Source
+## ⚙️ Funciones principales
+- Almacenamiento de datos crudos
+- Conservación del historial
+- Soporte de datos estructurados y no estructurados
+- Base para procesamiento posterior
+
+---
+
+## 🌐 Tecnologías Open Source
 - Hadoop HDFS
 - Delta Lake
 - Apache Iceberg
 - Apache Hudi
 - MinIO
 
-## 🟠 Pago
+---
+
+## 💰 Tecnologías de Pago
 - Snowflake
 - Databricks Lakehouse
 - Cloudera Data Platform
 - Dell ECS
 
-## 🔵 Azure / Microsoft
+---
+
+## ☁️ Azure / Microsoft
 - Azure Data Lake Storage Gen2
 - Azure Blob Storage
 - Microsoft OneLake
@@ -29,6 +38,15 @@
 
 ---
 
-## 💡 Ejemplo de uso
-- Guardar logs de aplicaciones
-- Almacenar datos históricos sin modificar
+## 📝 Ejemplo Real
+Se almacenan:
+
+- Logs de aplicaciones
+- Datos de sensores IoT
+- Archivos CSV de ventas
+- Datos de APIs sin transformar
+
+---
+
+## 🔑 Idea Clave
+Es la “zona de aterrizaje” donde los datos llegan sin cambios.
