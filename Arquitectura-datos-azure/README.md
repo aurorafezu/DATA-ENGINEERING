@@ -1,61 +1,52 @@
 # 🏗️ Arquitectura de Datos en Azure
 
-## 📊 Diagrama General
+## 📊 Vista General de la Arquitectura
 
-![Arquitectura de Datos](img/arquitectura.png)
-
----
-
-# 🗄️ Capa de Origen
-
-![Capa de Origen](img/origen.png)
-
-📌 Sistemas donde nacen los datos (ERP, CRM, bases de datos).
+![Arquitectura 1](IMG/IMG.png)
 
 ---
 
-# 🚀 Capa de Ingesta
-
-![Capa de Ingesta](img/ingesta.png)
-
-📌 Encargada de capturar y mover los datos hacia la plataforma.
+![Arquitectura 2](IMG/IMG.png)
 
 ---
 
-# 📦 Capa RAW / Landing
-
-![Capa RAW](img/raw.png)
-
-📌 Almacena los datos sin modificar.
+![Arquitectura 3](IMG/IMG.png)
 
 ---
 
-# ⚙️ Capa de Procesamiento
+# 🧠 Explicación de la Arquitectura
 
-![Capa de Procesamiento](img/procesamiento.png)
+Esta arquitectura está compuesta por varias capas:
 
-📌 Limpia, transforma y prepara los datos.
-
----
-
-# 📊 Capa de Modelado
-
-![Capa de Modelado](img/modelado.png)
-
-📌 Organiza los datos en modelos para análisis.
+- Origen
+- Ingesta
+- RAW / Landing
+- Procesamiento
+- Modelado
+- Acceso
+- Capa transversal
 
 ---
 
-# 📈 Capa de Acceso
+# 🗄️ Capas del Sistema
 
-![Capa de Acceso](img/acceso.png)
+## 📌 Origen
+Datos que provienen de sistemas empresariales.
 
-📌 Permite visualizar datos mediante dashboards y aplicaciones.
+## 📌 Ingesta
+Movimiento de datos hacia la plataforma.
 
----
+## 📌 RAW / Landing
+Almacenamiento de datos sin procesar.
 
-# 🔐 Capa Transversal
+## 📌 Procesamiento
+Transformación y limpieza de datos.
 
-![Capa Transversal](img/transversal.png)
+## 📌 Modelado
+Estructuración para análisis.
 
-📌 Seguridad, gobernanza y monitoreo de toda la arquitectura.
+## 📌 Acceso
+Consumo de datos por usuarios.
+
+## 📌 Transversal
+Seguridad, gobierno y monitoreo.
