@@ -1,27 +1,37 @@
 # ⚙️ Capa de Procesamiento
 
 ## 🎯 Objetivo
-📌 Transformar, limpiar y enriquecer los datos.
-
-## 📊 Flujo
-📦 RAW → ⚙️ PROCESAMIENTO → 📊 MODELADO
+Limpiar, transformar y enriquecer los datos para convertirlos en información útil.
 
 ---
 
-## 🟢 Open Source
+## ⚙️ Funciones principales
+- Limpieza de datos
+- Eliminación de duplicados
+- Transformaciones ETL/ELT
+- Enriquecimiento de datos
+- Automatización de pipelines
+
+---
+
+## 🌐 Tecnologías Open Source
 - Apache Spark
 - Apache Flink
 - Apache Airflow
 - dbt Core
 - Python
 
-## 🟠 Pago
+---
+
+## 💰 Tecnologías de Pago
 - Databricks
 - Alteryx
 - SAS
 - Informatica Data Engineering
 
-## 🔵 Azure / Microsoft
+---
+
+## ☁️ Azure / Microsoft
 - Azure Databricks
 - Azure Synapse Analytics
 - Azure Functions
@@ -30,6 +40,13 @@
 
 ---
 
-## 💡 Ejemplo de uso
+## 📝 Ejemplo Real
 - Limpieza de datos duplicados
-- Transformación de datos en tablas analíticas
+- Normalización de formatos
+- Unión de fuentes distintas
+- Cálculo de métricas
+
+---
+
+## 🔑 Idea Clave
+Convierte datos crudos en información lista para análisis.
