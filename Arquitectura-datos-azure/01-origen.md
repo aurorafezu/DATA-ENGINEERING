@@ -1,25 +1,24 @@
 # 🗄️ Capa de Origen
 
-## 🎯 ¿Qué hace esta capa?
-Es la capa donde se generan y almacenan los datos desde sistemas empresariales como bases de datos, ERP, CRM y aplicaciones.
+## 🎯 Objetivo
+📌 Esta capa almacena los datos desde sistemas empresariales como ERP, CRM, bases de datos y aplicaciones.
+
+## 📊 Flujo
+🌐 Sistemas empresariales → 🗄️ ORIGEN → 🚀 INGESTA
 
 ---
 
-## 🟢 Tecnologías Open Source
+## 🟢 Open Source
 - MySQL
 - PostgreSQL
 - MongoDB
 - Apache Cassandra
 
----
-
-## 🟠 Tecnologías de Pago
+## 🟠 Pago
 - Oracle Database
 - Microsoft SQL Server
 - SAP HANA
 - IBM Db2
-
----
 
 ## 🔵 Azure / Microsoft
 - Azure SQL Database
@@ -27,3 +26,10 @@ Es la capa donde se generan y almacenan los datos desde sistemas empresariales c
 - Azure Cosmos DB
 - Microsoft Dataverse
 - Dynamics 365
+
+---
+
+## 💡 Ejemplo de uso
+- Datos de clientes
+- Ventas de ERP
+- Información de CRM
