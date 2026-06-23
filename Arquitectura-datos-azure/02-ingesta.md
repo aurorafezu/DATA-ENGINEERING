@@ -1,60 +1,36 @@
-# 🚀 Capa de Ingesta
+# 🚀 Capa de Ingesta (Movimiento de datos)
 
-## 🎯 Objetivo
-Capturar y transportar datos desde las fuentes hacia la plataforma analítica de forma segura, confiable y escalable.
-
----
-
-## ⚙️ Funciones principales
-- Ingesta batch y streaming
-- Integración de múltiples fuentes
-- Gestión de eventos y colas
-- Validación inicial de datos
-- Trazabilidad del flujo
+## 🎯 Contexto
+Los datos generados por la tienda online deben moverse hacia la nube para su análisis.
 
 ---
 
-## 🌐 Tecnologías Open Source
+## ⚙️ ¿Qué ocurre aquí?
+Se conectan sistemas en tiempo real y por lotes.
+
+---
+
+## 🌊 Ejemplo de flujo real
+Pedidos → Pagos → Envíos → Marketing → Analítica
+
+---
+
+## 🟢 Open Source
 - Apache Kafka
 - Apache NiFi
-- Airbyte
-- Logstash
-- Apache Flume
+- Fluentd
 
----
-
-## 💰 Tecnologías de Pago
-- Informatica PowerCenter
-- Talend Data Integration
+## 🟠 Pago
 - Fivetran
-- StreamSets
-- Confluent Cloud
-
----
+- Talend
+- Informatica
 
 ## ☁️ Azure / Microsoft
-- Azure Data Factory
 - Azure Event Hubs
+- Azure Data Factory
 - Azure Service Bus
-- Azure Stream Analytics
-- Azure IoT Hub
 
 ---
 
-## 📝 Ejemplo Real
-Datos desde:
-
-- SQL Server (ventas)
-- Salesforce (clientes)
-- API externa (tipo de cambio)
-- IoT (sensores)
-
-Son enviados mediante:
-
-👉 Azure Data Factory (batch)  
-👉 Azure Event Hubs (tiempo real)
-
----
-
-## 🔑 Idea Clave
-La ingesta es el puente entre los sistemas de origen y la plataforma de datos.
+## 🔑 Idea clave
+Esta capa asegura que ningún dato del negocio se pierda en el camino.
