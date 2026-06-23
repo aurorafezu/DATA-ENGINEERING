@@ -1,54 +1,41 @@
-# 🗄️ Capa de Origen
+# 🗄️ Capa de Origen (Sistemas de la Empresa)
 
-## 🎯 Objetivo
-Almacenar y gestionar los datos en su estado original provenientes de sistemas empresariales, bases de datos, aplicaciones, ERP, CRM y APIs.
-
----
-
-## ⚙️ Funciones principales
-- Generación de datos desde sistemas fuente
-- Almacenamiento estructurado y no estructurado
-- Integración con sistemas empresariales
-- Preparación para procesos de ingesta
+## 🎯 Contexto
+En una empresa de comercio online, los datos se generan en múltiples sistemas internos y externos.
 
 ---
 
-## 🌐 Tecnologías Open Source
-- MySQL
+## 📊 ¿Qué ocurre aquí?
+Es donde se crean los datos antes de entrar al ecosistema analítico.
+
+---
+
+## 🧩 Ejemplos de fuentes reales
+- Sistema de pedidos online
+- Plataforma de pagos
+- App móvil de clientes
+- API de envíos
+- CRM de marketing
+
+---
+
+## 🟢 Open Source
 - PostgreSQL
+- MySQL
 - MongoDB
-- Apache Cassandra
-- SQLite
 
----
-
-## 💰 Tecnologías de Pago
+## 🟠 Pago
 - Oracle Database
-- Microsoft SQL Server
 - SAP HANA
-- IBM Db2
-
----
+- Microsoft SQL Server
 
 ## ☁️ Azure / Microsoft
 - Azure SQL Database
-- Azure Database for PostgreSQL
 - Azure Cosmos DB
-- Microsoft Dataverse
 - Dynamics 365
+- Dataverse
 
 ---
 
-## 📝 Ejemplo Real
-Una empresa almacena información en:
-
-- ERP → ventas y finanzas
-- CRM → clientes y oportunidades
-- APIs → datos externos
-
-Estos datos se convierten en la base inicial para el análisis.
-
----
-
-## 🔑 Idea Clave
-La capa de origen es el punto de partida de todos los datos dentro de la arquitectura.
+## 🔑 Idea clave
+Aquí se generan todos los datos operativos del negocio antes de ser analizados.
