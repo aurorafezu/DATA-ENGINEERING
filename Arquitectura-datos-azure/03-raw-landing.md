@@ -1,52 +1,39 @@
-# 📦 Capa RAW / Landing
+# 📦 Capa RAW / Landing (Zona de almacenamiento)
 
-## 🎯 Objetivo
-Almacenar los datos en su estado original sin transformaciones para conservar su integridad.
-
----
-
-## ⚙️ Funciones principales
-- Almacenamiento de datos crudos
-- Conservación del historial
-- Soporte de datos estructurados y no estructurados
-- Base para procesamiento posterior
+## 🎯 Contexto
+Aquí la empresa guarda todos los datos tal como llegan, sin modificarlos.
 
 ---
 
-## 🌐 Tecnologías Open Source
-- Hadoop HDFS
+## 🧊 ¿Qué significa esto?
+Es como un “archivo histórico” del negocio.
+
+---
+
+## 📁 Tipos de datos almacenados
+- Logs de compras
+- Historial de clientes
+- Eventos de la app móvil
+- Datos de sensores de entrega
+
+---
+
+## 🟢 Open Source
 - Delta Lake
+- Hadoop HDFS
 - Apache Iceberg
-- Apache Hudi
-- MinIO
 
----
-
-## 💰 Tecnologías de Pago
+## 🟠 Pago
 - Snowflake
-- Databricks Lakehouse
-- Cloudera Data Platform
-- Dell ECS
-
----
+- Databricks
+- Cloudera
 
 ## ☁️ Azure / Microsoft
 - Azure Data Lake Storage Gen2
 - Azure Blob Storage
 - Microsoft OneLake
-- Azure Storage Account
 
 ---
 
-## 📝 Ejemplo Real
-Se almacenan:
-
-- Logs de aplicaciones
-- Datos de sensores IoT
-- Archivos CSV de ventas
-- Datos de APIs sin transformar
-
----
-
-## 🔑 Idea Clave
-Es la “zona de aterrizaje” donde los datos llegan sin cambios.
+## 🔑 Idea clave
+Es el “almacén bruto” donde todo se guarda sin tocar.
