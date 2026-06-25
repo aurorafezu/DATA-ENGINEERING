@@ -1,53 +1,82 @@
 # Práctica de Laboratorio: Exploración de Azure Storage
 
 
+# Resumen
+
+En esta práctica se ha realizado la creación y configuración de una cuenta de almacenamiento en Microsoft Azure con el objetivo de explorar los principales servicios de almacenamiento no relacional.
+
+Se han analizado tres servicios fundamentales: **Azure Blob Storage**, **Azure Data Lake Storage Gen2** y **Azure Files**, comprendiendo sus diferencias, funcionamiento y casos de uso.
+
+Además, se ha estudiado la diferencia entre estructuras de almacenamiento planas y jerárquicas, así como los mecanismos de acceso, organización y seguridad de los datos en la nube.
+
+---
+
 # 1. Introducción
 
-En esta práctica se exploran los principales servicios de almacenamiento no relacional ofrecidos por Microsoft Azure mediante la creación y configuración de una cuenta de almacenamiento.
+Microsoft Azure Storage es una solución de almacenamiento en la nube altamente escalable, segura y disponible. Permite almacenar datos no estructurados como archivos, imágenes, documentos o grandes volúmenes de información analítica.
 
-Los servicios analizados son:
-
-- **Azure Blob Storage**: almacenamiento de archivos y objetos.
-- **Azure Data Lake Storage Gen2**: almacenamiento orientado al análisis masivo de datos.
-- **Azure Files**: recursos compartidos de archivos accesibles desde distintos sistemas operativos.
-
-Durante el desarrollo del laboratorio se analizarán las características principales de cada servicio y las diferencias entre ellos.
+A diferencia de las bases de datos relacionales, este tipo de almacenamiento no requiere una estructura fija de tablas, lo que lo hace ideal para escenarios de Big Data, aplicaciones web y sistemas distribuidos.
 
 ---
 
 # 2. Objetivos
 
-Los objetivos de esta práctica son:
+Los objetivos principales de esta práctica son:
 
-- Crear una cuenta de almacenamiento en Azure.
-- Comprender la estructura de los recursos de almacenamiento.
-- Trabajar con contenedores y blobs.
-- Analizar el funcionamiento de carpetas virtuales y carpetas jerárquicas.
-- Habilitar Azure Data Lake Storage Gen2.
-- Crear y gestionar recursos compartidos de archivos en Azure Files.
-- Eliminar correctamente los recursos utilizados.
-
----
-
-# 3. Creación de una Cuenta de Azure Storage
-
-## Paso 1. Acceso al Portal de Azure
-
-Acceder al Portal de Azure mediante una cuenta con permisos administrativos.
-
-![Portal de Azure](IMG/1.png)
-
-### Explicación
-
-El Portal de Azure es la interfaz web que permite crear y administrar todos los recursos de la plataforma cloud de Microsoft.
+- Crear una cuenta de almacenamiento en Microsoft Azure.
+- Comprender la arquitectura de Azure Storage.
+- Trabajar con Azure Blob Storage.
+- Analizar el comportamiento de carpetas virtuales.
+- Activar y utilizar Azure Data Lake Storage Gen2.
+- Comprender el concepto de directorios jerárquicos.
+- Crear y configurar Azure Files.
+- Comparar los distintos servicios de almacenamiento.
+- Eliminar recursos para evitar costes innecesarios.
 
 ---
 
-## Paso 2. Crear un nuevo recurso
+# 3. Arquitectura del laboratorio
 
-Seleccionar:
+La infraestructura utilizada en esta práctica se basa en una única cuenta de almacenamiento sobre la que se despliegan diferentes servicios:
 
-**Create a Resource → Storage Account**
+```
+Azure Storage Account
+│
+├── Blob Storage
+│   └── Contenedor: data
+│       └── product_data
+│           ├── product1.json
+│           └── product2.json
+│
+├── Data Lake Storage Gen2
+│   └── Espacio de nombres jerárquico habilitado
+│
+└── Azure Files
+    └── File Share: files
+```
+
+---
+
+# 4. Creación de la cuenta de almacenamiento
+
+## Paso 1. Acceso al portal de Azure
+
+Accedemos al portal de Azure desde un navegador web.
+
+**Figura 1. Portal de Azure**
+
+![Portal Azure](IMG/1.png)
+
+**Análisis:**  
+El portal de Azure es la interfaz principal de administración de recursos en la nube.
+
+---
+
+## Paso 2. Creación del recurso
+
+Se selecciona la opción **Storage Account** dentro de “Create a resource”.
+
+**Figura 2. Creación de Storage Account**
 
 ![Crear recurso](IMG/2.png)
 
@@ -55,374 +84,274 @@ Seleccionar:
 
 ## Paso 3. Configuración básica
 
-Introducir los siguientes parámetros:
+Se establecen los siguientes parámetros:
 
-| Configuración | Valor |
-|--------------|--------|
-| Subscription | Suscripción personal |
+| Parámetro | Valor |
+|----------|------|
 | Resource Group | dp900-lab-rg |
-| Storage Account Name | Nombre único |
-| Region | Región más cercana |
 | Performance | Standard |
-| Redundancy | Locally-redundant storage (LRS) |
+| Redundancy | LRS |
 
-![Configuración básica](IMG/3.png)
+**Figura 3. Configuración básica**
 
-### Explicación
+![Configuración](IMG/3.png)
 
-- **Resource Group:** agrupa recursos relacionados.
-- **Standard:** opción económica para pruebas y laboratorios.
-- **LRS:** mantiene tres copias de los datos dentro de una misma región.
+**Análisis:**  
+Se utiliza configuración estándar para optimizar costes en entorno de laboratorio.
 
 ---
 
 ## Paso 4. Configuración avanzada
 
-En la pestaña **Advanced**, comprobar que la opción:
+Se mantiene desactivada la opción **Hierarchical Namespace**.
 
-**Enable Hierarchical Namespace**
+**Figura 4. Configuración avanzada**
 
-permanece desactivada.
-
-![Configuración avanzada](IMG/4.png)
-
-### Explicación
-
-Inicialmente trabajaremos con Blob Storage tradicional para comprender el funcionamiento de las carpetas virtuales.
+![Avanzado](IMG/4.png)
 
 ---
 
 ## Paso 5. Protección de datos
 
-Desactivar todas las opciones relacionadas con:
+Se desactivan opciones de soft delete.
 
-- Soft Delete para blobs.
-- Soft Delete para contenedores.
-- Soft Delete para recursos compartidos.
+**Figura 5. Protección de datos**
 
-![Protección de datos](IMG/5.png)
+![Protección](IMG/5.png)
 
 ---
 
-## Paso 6. Validación y despliegue
+## Paso 6. Creación del recurso
 
-Revisar la configuración y seleccionar **Create**.
+Se valida la configuración y se despliega la cuenta.
 
-Una vez finalizado el despliegue, acceder al recurso creado.
+**Figura 6. Recurso creado**
 
-![Despliegue completado](IMG/6.png)
-
----
-
-# 4. Exploración de Azure Blob Storage
-
-## Paso 1. Crear un contenedor
-
-Acceder a:
-
-**Data Storage → Containers**
-
-Crear un nuevo contenedor denominado:
-
-`data`
-
-![Crear contenedor](IMG/7.png)
-
-### Explicación
-
-Un contenedor es la unidad lógica donde se almacenan los blobs dentro de una cuenta de almacenamiento.
+![Deploy](IMG/6.png)
 
 ---
 
-## Paso 2. Verificar el contenedor
+# 5. Azure Blob Storage
 
-Comprobar que el contenedor aparece correctamente en la lista.
+## Paso 1. Creación del contenedor
 
-![Contenedor creado](IMG/8.png)
+Se crea un contenedor llamado `data`.
 
----
+**Figura 7. Contenedor creado**
 
-## Paso 3. Acceder al Storage Browser
-
-Entrar en:
-
-**Storage Browser → Blob Containers → data**
-
-Verificar que el contenedor se encuentra vacío.
-
-![Storage Browser](IMG/9.png)
+![Contenedor](IMG/7.png)
 
 ---
 
-## Paso 4. Crear un directorio virtual
+## Paso 2. Verificación
 
-Seleccionar:
+El contenedor aparece correctamente en la lista.
 
-**Add Directory**
+**Figura 8. Verificación**
 
-Nombre:
-
-`products`
-
-![Crear directorio](IMG/10.png)
+![Verificación](IMG/8.png)
 
 ---
 
-## Paso 5. Comprobar el comportamiento de carpetas virtuales
+## Paso 3. Storage Browser
 
-Regresar al contenedor principal y observar que la carpeta desaparece al no contener archivos.
+Se accede al explorador de almacenamiento.
 
-![Carpetas virtuales](IMG/11.png)
+**Figura 9. Storage Browser**
 
-### Explicación
-
-Azure Blob Storage utiliza una estructura plana.
-
-Las carpetas son únicamente rutas lógicas y no existen físicamente hasta que contienen algún archivo.
+![Browser](IMG/9.png)
 
 ---
 
-## Paso 6. Subir un archivo JSON
+## Paso 4. Directorio virtual
 
-Descargar previamente:
+Se crea la carpeta `products`.
 
-`product1.json`
+**Figura 10. Directorio virtual**
 
-Subir el archivo indicando:
-
-**Upload to folder:**
-
-`product_data`
-
-![Subida de archivo](IMG/12.png)
+![Directorio](IMG/10.png)
 
 ---
 
-## Paso 7. Verificar la carga
+## Paso 5. Comportamiento de carpetas
 
-Comprobar que aparece la carpeta virtual:
+La carpeta desaparece al no contener archivos.
 
-`product_data`
+**Figura 11. Carpeta virtual**
 
-y dentro de ella el archivo:
+![Virtual](IMG/11.png)
 
-`product1.json`
-
-![Archivo cargado](IMG/13.png)
-
----
-
-## Resultado obtenido
-
-Se ha comprobado el funcionamiento de Azure Blob Storage utilizando carpetas virtuales dentro de una estructura de almacenamiento plana.
+**Análisis:**  
+Azure Blob Storage utiliza una estructura plana basada en nombres, no directorios reales.
 
 ---
 
-# 5. Exploración de Azure Data Lake Storage Gen2
+## Paso 6. Subida de archivo
 
-## Paso 1. Descargar el segundo archivo
+Se sube `product1.json` al contenedor.
 
-Descargar:
+**Figura 12. Subida de archivo**
 
-`product2.json`
-
-para utilizarlo posteriormente.
+![Upload](IMG/12.png)
 
 ---
 
-## Paso 2. Habilitar Data Lake Gen2
+## Paso 7. Resultado
 
-Acceder a:
+Se verifica la existencia del archivo en `product_data`.
 
-**Settings → Data Lake Gen2 Upgrade**
+**Figura 13. Resultado**
 
-Completar los tres pasos del asistente.
-
-![Upgrade Gen2](IMG/14.png)
-
-### Explicación
-
-Esta actualización activa el uso de un espacio de nombres jerárquico que permite gestionar directorios reales.
+![Resultado](IMG/13.png)
 
 ---
 
-## Paso 3. Verificar los datos existentes
+# 6. Azure Data Lake Storage Gen2
 
-Comprobar que el archivo:
+## Paso 1. Archivo adicional
 
-`product1.json`
-
-continúa disponible tras la actualización.
-
-![Verificación datos](IMG/15.png)
+Se descarga `product2.json`.
 
 ---
 
-## Paso 4. Subir un nuevo archivo
+## Paso 2. Activación de Gen2
 
-Subir:
+Se habilita el espacio de nombres jerárquico.
 
-`product2.json`
+**Figura 14. Upgrade Gen2**
 
-a la carpeta:
-
-`product_data`
-
-![Subir segundo archivo](IMG/16.png)
+![Gen2](IMG/14.png)
 
 ---
 
-## Paso 5. Verificar ambos archivos
+## Paso 3. Verificación
 
-Confirmar que aparecen:
+Se comprueba la persistencia de datos.
 
-- product1.json
-- product2.json
+**Figura 15. Verificación**
 
-![Archivos almacenados](IMG/17.png)
-
----
-
-## Paso 6. Analizar las nuevas capacidades
-
-Abrir el menú contextual de la carpeta.
-
-Ahora aparecen opciones como:
-
-- Rename
-- Delete
-- Manage ACL
-- Generate SAS
-
-![Opciones ACL](IMG/18.png)
-
-### Explicación
-
-Con Data Lake Storage Gen2 las carpetas pasan a existir físicamente dentro de la estructura del almacenamiento.
-
-Esto permite:
-
-- Gestionar permisos.
-- Renombrar carpetas.
-- Aplicar ACL.
-- Organizar grandes volúmenes de información.
+![Check](IMG/15.png)
 
 ---
 
-## Resultado obtenido
+## Paso 4. Nuevo archivo
 
-Se ha observado la diferencia entre una estructura plana y una estructura jerárquica de almacenamiento.
+Se sube `product2.json`.
 
----
+**Figura 16. Upload 2**
 
-# 6. Exploración de Azure Files
-
-## Paso 1. Acceder a Classic File Shares
-
-Dentro de la cuenta de almacenamiento acceder a:
-
-**Data Storage → Classic File Shares**
-
-![Azure Files](IMG/19.png)
+![Upload2](IMG/16.png)
 
 ---
 
-## Paso 2. Crear un recurso compartido
+## Paso 5. Resultados
 
-Seleccionar:
+Ambos archivos están disponibles.
 
-**+ Classic File Share**
+**Figura 17. Archivos**
 
-Configuración:
-
-| Parámetro | Valor |
-|------------|---------|
-| Name | files |
-| Access Tier | Transaction Optimized |
-
-![Crear File Share](IMG/20.png)
+![Files](IMG/17.png)
 
 ---
 
-## Paso 3. Desactivar Backup
+## Paso 6. Nuevas funcionalidades
 
-Desmarcar la opción:
+Opciones avanzadas como ACL y Rename están disponibles.
 
-**Enable Backup**
+**Figura 18. ACL**
 
-![Backup desactivado](IMG/21.png)
+![ACL](IMG/18.png)
 
----
-
-## Paso 4. Crear el recurso
-
-Seleccionar:
-
-**Review + Create → Create**
-
-![Crear recurso compartido](IMG/22.png)
+**Análisis:**  
+Ahora los directorios son reales y permiten gestión avanzada de permisos.
 
 ---
 
-## Paso 5. Conexión al recurso compartido
+# 7. Azure Files
 
-Abrir el recurso creado y seleccionar:
+## Paso 1. File Share
 
-**Connect**
+Se accede a Classic File Shares.
 
-Observar los scripts disponibles para:
+**Figura 19. Azure Files**
 
-- Windows
-- Linux
-- macOS
-
-![Conexión File Share](IMG/23.png)
-
-### Explicación
-
-Azure Files permite compartir carpetas mediante protocolos estándar como SMB y NFS, facilitando la integración con servidores y equipos locales.
+![Files](IMG/19.png)
 
 ---
 
-## Resultado obtenido
+## Paso 2. Creación
 
-Se ha creado y configurado correctamente un recurso compartido de archivos en Azure.
+Se crea el recurso `files`.
 
----
+**Figura 20. Crear share**
 
-# 7. Limpieza de Recursos
-
-Para evitar costes innecesarios se procede a eliminar todos los recursos creados.
-
-## Paso 1
-
-Acceder al grupo de recursos:
-
-`dp900-lab-rg`
+![Share](IMG/20.png)
 
 ---
 
-## Paso 2
+## Paso 3. Backup
 
-Seleccionar:
+Se desactiva backup.
 
-**Delete Resource Group**
+**Figura 21. Backup**
 
-Introducir el nombre del grupo para confirmar la eliminación.
-
-![Eliminar Resource Group](IMG/24.png)
+![Backup](IMG/21.png)
 
 ---
 
-# 8. Conclusiones
+## Paso 4. Creación final
 
-Durante esta práctica se han explorado los principales servicios de almacenamiento no relacional de Microsoft Azure.
+Se despliega el recurso.
 
-Los resultados obtenidos permiten concluir que:
+**Figura 22. Creado**
 
-- Azure Blob Storage es adecuado para almacenar grandes cantidades de archivos y datos no estructurados.
-- Azure Data Lake Storage Gen2 proporciona capacidades avanzadas para análisis de datos y gestión jerárquica.
-- Azure Files facilita la compartición de archivos utilizando protocolos tradicionales compatibles con múltiples sistemas operativos.
-- La utilización de Resource Groups simplifica enormemente la administración y eliminación de recursos.
+![Create](IMG/22.png)
 
-En conjunto, estos servicios constituyen la base del almacenamiento de datos no relacionales dentro del ecosistema Microsoft Azure.
+---
+
+## Paso 5. Conexión
+
+Se visualizan scripts de conexión.
+
+**Figura 23. Connect**
+
+![Connect](IMG/23.png)
+
+**Análisis:**  
+Permite acceso mediante SMB/NFS desde distintos sistemas operativos.
+
+---
+
+# 8. Aprendizajes obtenidos
+
+- Creación de cuentas de almacenamiento en Azure.
+- Gestión de contenedores y blobs.
+- Diferencias entre estructuras planas y jerárquicas.
+- Uso de Azure Data Lake Storage Gen2.
+- Aplicación de ACL en almacenamiento.
+- Creación de Azure Files.
+- Eliminación de recursos en Azure.
+
+---
+
+# 9. Conclusiones
+
+Esta práctica ha permitido comprender de forma completa el funcionamiento de los principales servicios de almacenamiento de Microsoft Azure.
+
+Se ha observado cómo Azure Blob Storage utiliza una estructura basada en objetos con carpetas virtuales, mientras que Azure Data Lake Storage Gen2 introduce una jerarquía real que mejora la organización y el control de datos.
+
+Por otro lado, Azure Files proporciona una solución compatible con sistemas de archivos tradicionales, facilitando la migración de aplicaciones locales a la nube.
+
+En conjunto, estos servicios demuestran la flexibilidad de Azure para adaptarse a diferentes escenarios de almacenamiento, desde aplicaciones simples hasta sistemas de análisis de Big Data.
+
+---
+
+# 10. Limpieza de recursos
+
+Se elimina el grupo de recursos para evitar costes.
+
+**Figura 24. Eliminación**
+
+![Delete](IMG/24.png)
+
+---
