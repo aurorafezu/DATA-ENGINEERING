@@ -10,7 +10,6 @@
 
 # 🚀 Azure Cosmos DB 
 
-
 # 🧠 1. Introducción
 
 Las bases de datos relacionales son rígidas.
@@ -24,9 +23,37 @@ NoSQL permite:
 
 ---
 
-# ⚙️ 2. Arquitectura de Cosmos DB
+# ⚙️ 2. ¿Qué es Azure Cosmos DB?
 
-## 🏗️ Estructura
+:contentReference[oaicite:1]{index=1} es un servicio PaaS:
+
+✔ Sin servidores  
+✔ Escalado automático  
+✔ Backups automáticos  
+✔ Alta disponibilidad  
+
+---
+
+# 🧠 IMPORTANTE
+
+👉 Cosmos DB = NoSQL global distribuida con baja latencia, escalado horizontal y consistencia configurable.
+
+👉 Todo en Cosmos DB gira alrededor de:
+- RU/s (coste y rendimiento)
+- Particiones (escala)
+- Regiones (global)
+- Consistencia (precisión vs disponibilidad)
+
+---
+
+👉 IDEA CLAVE:
+Cosmos DB NO es solo una base de datos → es un sistema distribuido global.
+
+---
+
+# 🏗️ 3. Arquitectura de datos
+
+## Estructura
 
 1. Cuenta  
 2. Base de datos  
@@ -35,20 +62,30 @@ NoSQL permite:
 
 ---
 
-## 🖼️ Imagen arquitectura
+## 🔑 Clave de partición (🔥 MUY IMPORTANTE)
 
-![Arquitectura Cosmos DB](DOC/1.png)
+👉 Distribuye datos entre particiones
+
+👉 Cada partición = hasta 20 GB
+
+👉 Define rendimiento del sistema
+
+❌ Mala clave → hot partitions (problemas de rendimiento)  
+✔ Buena clave → escalabilidad y equilibrio
 
 ---
 
-# 🔑 3. Particiones (CLAVE DE EXAMEN)
+## 🧠 NOTA DE EXAMEN
 
-- Divide datos en particiones lógicas
-- Cada partición → 20 GB máximo
-- Clave de partición = rendimiento
+👉 Si hay mala partición:
+- El sistema se sobrecarga en una sola partición
+- Baja el rendimiento global
 
-❌ Mala clave = hot partitions  
-✔ Buena clave = escalabilidad
+---
+
+## 🖼️ Arquitectura
+
+![Arquitectura Cosmos DB](DOC/1.png)
 
 ---
 
@@ -56,32 +93,60 @@ NoSQL permite:
 
 - Replicación automática
 - Multi-región
-- Baja latencia global
+- Lectura desde región más cercana
 
 ---
 
-## 🖼️ Imagen global
+## ⚡ Latencia
+
+- Lecturas: ~4 ms  
+- Escrituras: ~5 ms  
+
+---
+
+## 🧠 NOTA DE EXAMEN
+
+👉 Global no significa gratis:
+- Más regiones = más coste RU/s
+
+---
+
+## 🖼️ Global
 
 ![Distribución global](DOC/2.png)
 
 ---
 
-# 📏 5. Consistencia
+# 📏 5. Consistencia (🔥 EXAMEN TOP)
 
 | Nivel | Descripción |
 |------|-------------|
-| 🔴 Fuerte | siempre actualizado |
+| 🔴 Fuerte | siempre datos actuales |
 | 🟠 Estancamiento acotado | retraso controlado |
-| 🟡 Sesión | ⭐ recomendado |
-| 🔵 Prefijo consistente | orden garantizado |
-| ⚪ Eventual | alta disponibilidad |
+| 🟡 Sesión | ⭐ más usado |
+| 🔵 Prefijo consistente | orden correcto |
+| ⚪ Eventual | máxima disponibilidad |
+
+---
+
+## 🧠 NOTA DE EXAMEN
+
+👉 Sesión = nivel recomendado en la mayoría de apps
 
 ---
 
 # 💰 6. RU/s
 
 - 1 RU ≈ lectura de 1 KB
-- Todo consume RU
+- Todo consumo cuesta RU
+
+---
+
+## 🧠 NOTA DE EXAMEN
+
+👉 RU/s = coste + rendimiento
+
+👉 Si suben consultas → suben RU
 
 ---
 
@@ -95,7 +160,13 @@ NoSQL permite:
 
 ---
 
-## 🖼️ Imagen rendimiento
+## 🧠 NOTA DE EXAMEN
+
+👉 Serverless = solo 1 región
+
+---
+
+## 🖼️ Rendimiento
 
 ![Rendimiento Cosmos DB](DOC/3.png)
 
@@ -103,36 +174,58 @@ NoSQL permite:
 
 # 🔌 8. APIs de Cosmos DB
 
-:contentReference[oaicite:1]{index=1} soporta:
+:contentReference[oaicite:2]{index=2} soporta:
 
-- NoSQL
-- MongoDB
-- Table
-- Cassandra
-- Gremlin
+- NoSQL (nativa)
+- MongoDB 🍃
+- Table 📊
+- Cassandra 🧱
+- Gremlin 🕸️
 
 ---
 
-## 🖼️ Imagen APIs
+## 🧠 IDEA CLAVE
+
+👉 API = compatibilidad  
+👉 Motor = el mismo Cosmos DB
+
+---
+
+## 🧠 NOTA DE EXAMEN
+
+👉 Puedes migrar MongoDB / Cassandra con cambios mínimos
+
+---
+
+## 🖼️ APIs
 
 ![APIs Cosmos DB](DOC/4.png)
 
 ---
 
-# 🕸️ 9. Gremlin (Grafos)
+# 🕸️ 9. GRAFOS (Gremlin)
 
 - Vértices = nodos
 - Aristas = relaciones
 
 ---
 
-## 🖼️ Imagen grafos
+## 🧠 NOTA DE EXAMEN
+
+👉 Grafos = ideal para:
+- redes sociales
+- fraude
+- recomendaciones
+
+---
+
+## 🖼️ Grafos
 
 ![Grafos Cosmos DB](DOC/5.png)
 
 ---
 
-# 📌 10. Cuándo usar Cosmos DB
+# 📌 10. CUÁNDO USAR COSMOS DB
 
 ✔ IoT 📡  
 ✔ Gaming 🎮  
@@ -141,16 +234,16 @@ NoSQL permite:
 
 ---
 
-# ❌ 11. Cuándo NO usarlo
+# ❌ 11. CUÁNDO NO USARLO
 
-- ❌ JOINs complejos → Azure SQL Database
-- ❌ Analítica histórica → Azure Synapse / Fabric
+- ❌ JOINs complejos → Azure SQL Database  
+- ❌ Analítica histórica → Azure Synapse / Microsoft Fabric  
 
 ---
 
 # 🧠 12. RESUMEN FINAL
 
-:contentReference[oaicite:2]{index=2} es:
+:contentReference[oaicite:3]{index=3} es:
 
 ✔ Global  
 ✔ NoSQL  
@@ -158,5 +251,10 @@ NoSQL permite:
 ✔ Escalable  
 ✔ Baja latencia  
 ✔ Basado en RU/s  
+✔ Consistencia configurable  
 
 ---
+
+# 🚀 FRASE FINAL
+
+👉 “Cosmos DB es una base de datos NoSQL global distribuida diseñada para baja latencia y escalabilidad horizontal con consistencia configurable.”
