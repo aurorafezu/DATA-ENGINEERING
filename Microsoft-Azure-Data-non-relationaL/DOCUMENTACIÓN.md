@@ -8,12 +8,12 @@
 
 --
 
-# 🚀 Azure Cosmos DB – Apuntes Completos (Estudio + Portfolio)
+# 🚀 Azure Cosmos DB 
 
 
 # 🧠 1. Introducción
 
-Las bases de datos relacionales son rígidas (tablas fijas).
+Las bases de datos relacionales son rígidas.
 
 NoSQL permite:
 
@@ -37,7 +37,7 @@ NoSQL permite:
 
 ## 🖼️ Imagen arquitectura
 
-![Arquitectura Cosmos DB](IMGDOC/1.png)
+![Arquitectura Cosmos DB](DOC/1.png)
 
 ---
 
@@ -47,7 +47,7 @@ NoSQL permite:
 - Cada partición → 20 GB máximo
 - Clave de partición = rendimiento
 
-❌ Mala clave = problemas de rendimiento  
+❌ Mala clave = hot partitions  
 ✔ Buena clave = escalabilidad
 
 ---
@@ -56,13 +56,13 @@ NoSQL permite:
 
 - Replicación automática
 - Multi-región
-- Baja latencia
+- Baja latencia global
 
 ---
 
 ## 🖼️ Imagen global
 
-![Distribución global](IMGDOC/2.png)
+![Distribución global](DOC/2.png)
 
 ---
 
@@ -73,12 +73,12 @@ NoSQL permite:
 | 🔴 Fuerte | siempre actualizado |
 | 🟠 Estancamiento acotado | retraso controlado |
 | 🟡 Sesión | ⭐ recomendado |
-| 🔵 Prefijo consistente | orden correcto |
-| ⚪ Eventual | más rápido pero menos consistente |
+| 🔵 Prefijo consistente | orden garantizado |
+| ⚪ Eventual | alta disponibilidad |
 
 ---
 
-# 💰 6. RU/s (MUY IMPORTANTE)
+# 💰 6. RU/s
 
 - 1 RU ≈ lectura de 1 KB
 - Todo consume RU
@@ -90,14 +90,14 @@ NoSQL permite:
 | Modelo | Descripción |
 |--------|-------------|
 | 🟢 Dedicado | un contenedor |
-| 🟡 Compartido | hasta 25 |
+| 🟡 Compartido | hasta 25 contenedores |
 | 🔵 Serverless | pago por uso |
 
 ---
 
 ## 🖼️ Imagen rendimiento
 
-![Rendimiento Cosmos DB](IMGDOC/3.png)
+![Rendimiento Cosmos DB](DOC/3.png)
 
 ---
 
@@ -115,20 +115,20 @@ NoSQL permite:
 
 ## 🖼️ Imagen APIs
 
-![APIs Cosmos DB](IMGDOC/4.png)
+![APIs Cosmos DB](DOC/4.png)
 
 ---
 
-# 🕸️ 9. Modelo de grafos (Gremlin)
+# 🕸️ 9. Gremlin (Grafos)
 
-- Nodos = vértices
-- Relaciones = aristas
+- Vértices = nodos
+- Aristas = relaciones
 
 ---
 
 ## 🖼️ Imagen grafos
 
-![Grafos Cosmos DB](IMGDOC/5.png)
+![Grafos Cosmos DB](DOC/5.png)
 
 ---
 
