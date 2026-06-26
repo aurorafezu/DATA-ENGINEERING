@@ -63,9 +63,6 @@ Azure Storage Account
 
 Accedemos al portal de Azure desde un navegador web.
 
-**Figura 1. Portal de Azure**
-
-![Portal Azure](IMGLS/1.png)
 
 **Análisis:**  
 El portal de Azure es la interfaz principal de administración de recursos en la nube.
@@ -78,7 +75,10 @@ Se selecciona la opción **Storage Account** dentro de “Create a resource”.
 
 **Figura 2. Creación de Storage Account**
 
-![Crear recurso](IMG/2.png)
+![Portal Azure](IMGLS/1.png)
+
+![Portal Azure](IMGLS/2.png)
+
 
 ---
 
@@ -94,7 +94,8 @@ Se establecen los siguientes parámetros:
 
 **Figura 3. Configuración básica**
 
-![Configuración](IMG/3.png)
+![Configuración](IMGLS/3.png)
+
 
 **Análisis:**  
 Se utiliza configuración estándar para optimizar costes en entorno de laboratorio.
@@ -107,7 +108,7 @@ Se mantiene desactivada la opción **Hierarchical Namespace**.
 
 **Figura 4. Configuración avanzada**
 
-![Avanzado](IMG/4.png)
+![Avanzado](IMGLS/4.png)
 
 ---
 
@@ -117,7 +118,7 @@ Se desactivan opciones de soft delete.
 
 **Figura 5. Protección de datos**
 
-![Protección](IMG/5.png)
+![Protección](IMGLS/5.png)
 
 ---
 
@@ -127,7 +128,10 @@ Se valida la configuración y se despliega la cuenta.
 
 **Figura 6. Recurso creado**
 
-![Deploy](IMG/6.png)
+![Deploy](IMGLS/6.png)
+
+![Deploy](IMGLS/7.png)
+
 
 ---
 
@@ -139,7 +143,9 @@ Se crea un contenedor llamado `data`.
 
 **Figura 7. Contenedor creado**
 
-![Contenedor](IMG/7.png)
+![Contenedor](IMGLS/8.png)
+
+![Contenedor](IMGLS/10.png)
 
 ---
 
@@ -149,7 +155,7 @@ El contenedor aparece correctamente en la lista.
 
 **Figura 8. Verificación**
 
-![Verificación](IMG/8.png)
+![Verificación](IMGLS/11.png)
 
 ---
 
@@ -159,7 +165,9 @@ Se accede al explorador de almacenamiento.
 
 **Figura 9. Storage Browser**
 
-![Browser](IMG/9.png)
+![Browser](IMGLS/12.png)
+
+![Browser](IMGLS/13.png)
 
 ---
 
@@ -169,7 +177,9 @@ Se crea la carpeta `products`.
 
 **Figura 10. Directorio virtual**
 
-![Directorio](IMG/10.png)
+![Directorio](IMGLS/14.png)
+
+![Directorio](IMGLS/15.png)
 
 ---
 
@@ -179,7 +189,7 @@ La carpeta desaparece al no contener archivos.
 
 **Figura 11. Carpeta virtual**
 
-![Virtual](IMG/11.png)
+![Virtual](IMGLS/16.png)
 
 **Análisis:**  
 Azure Blob Storage utiliza una estructura plana basada en nombres, no directorios reales.
@@ -192,7 +202,7 @@ Se sube `product1.json` al contenedor.
 
 **Figura 12. Subida de archivo**
 
-![Upload](IMG/12.png)
+![Upload](IMGLS/18.png)
 
 ---
 
@@ -202,7 +212,9 @@ Se verifica la existencia del archivo en `product_data`.
 
 **Figura 13. Resultado**
 
-![Resultado](IMG/13.png)
+![Resultado](IMGLS/19.png)
+
+![Resultado](IMGLS/20.png)
 
 ---
 
@@ -220,7 +232,9 @@ Se habilita el espacio de nombres jerárquico.
 
 **Figura 14. Upgrade Gen2**
 
-![Gen2](IMG/14.png)
+![Gen2](IMGLS/23.png)
+
+![Gen2](IMGLS/24.png)
 
 ---
 
@@ -230,7 +244,7 @@ Se comprueba la persistencia de datos.
 
 **Figura 15. Verificación**
 
-![Check](IMG/15.png)
+![Check](IMGLS/15.png)
 
 ---
 
@@ -240,7 +254,7 @@ Se sube `product2.json`.
 
 **Figura 16. Upload 2**
 
-![Upload2](IMG/16.png)
+![Upload2](IMGLS/25.png)
 
 ---
 
@@ -250,7 +264,7 @@ Ambos archivos están disponibles.
 
 **Figura 17. Archivos**
 
-![Files](IMG/17.png)
+![Files](IMGLS/26.png)
 
 ---
 
@@ -260,7 +274,7 @@ Opciones avanzadas como ACL y Rename están disponibles.
 
 **Figura 18. ACL**
 
-![ACL](IMG/18.png)
+![ACL](IMGLS/27.png)
 
 **Análisis:**  
 Ahora los directorios son reales y permiten gestión avanzada de permisos.
@@ -275,7 +289,7 @@ Se accede a Classic File Shares.
 
 **Figura 19. Azure Files**
 
-![Files](IMG/19.png)
+![Files](IMGLS/28.png)
 
 ---
 
@@ -285,7 +299,7 @@ Se crea el recurso `files`.
 
 **Figura 20. Crear share**
 
-![Share](IMG/20.png)
+![Share](IMGLS/29.png)
 
 ---
 
@@ -295,7 +309,7 @@ Se desactiva backup.
 
 **Figura 21. Backup**
 
-![Backup](IMG/21.png)
+![Backup](IMGLS/30.png)
 
 ---
 
@@ -305,7 +319,7 @@ Se despliega el recurso.
 
 **Figura 22. Creado**
 
-![Create](IMG/22.png)
+![Create](IMGLS/31.png)
 
 ---
 
@@ -315,7 +329,9 @@ Se visualizan scripts de conexión.
 
 **Figura 23. Connect**
 
-![Connect](IMG/23.png)
+![Connect](IMGLS/32.png)
+
+![Connect](IMGLS/33.png)
 
 **Análisis:**  
 Permite acceso mediante SMB/NFS desde distintos sistemas operativos.
@@ -352,6 +368,10 @@ Se elimina el grupo de recursos para evitar costes.
 
 **Figura 24. Eliminación**
 
-![Delete](IMG/24.png)
+![Delete](IMGLS/34.png)
+
+![Delete](IMGLS/35.png)
+
+![Delete](IMGLS/36.png)
 
 ---
