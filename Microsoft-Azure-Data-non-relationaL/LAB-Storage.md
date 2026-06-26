@@ -65,7 +65,7 @@ Accedemos al portal de Azure desde un navegador web.
 
 **Figura 1. Portal de Azure**
 
-![Portal Azure](IMG/1.png)
+![Portal Azure](IMGLS/1.png)
 
 **Análisis:**  
 El portal de Azure es la interfaz principal de administración de recursos en la nube.
