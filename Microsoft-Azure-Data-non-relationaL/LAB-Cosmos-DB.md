@@ -59,10 +59,6 @@ Azure Cosmos DB Account
 
 Se accede al portal de Azure desde el navegador web.
 
-**Figura 1. Portal de Azure**
-
-![Portal Azure](IMG/1.png)
-
 **Análisis:**  
 El portal de Azure es el centro de administración de todos los servicios cloud.
 
@@ -70,13 +66,21 @@ El portal de Azure es el centro de administración de todos los servicios cloud.
 
 ## Paso 2. Creación del recurso
 
-Se selecciona:
+Se selecciona: 
 
 **Azure Cosmos DB → Create**
 
 **Figura 2. Creación de Cosmos DB**
 
-![Crear Cosmos DB](IMG/2.png)
+![Crear Cosmos DB](IMGCOS/1.png)
+
+![Crear Cosmos DB](IMGCOS/2.png)
+
+![Crear Cosmos DB](IMGCOS/1-2.png)
+
+Crear la base de datos Azure Cosmos para NoSQL
+
+![Crear Cosmos DB](IMGCOS/2-3.png)
 
 ---
 
@@ -95,7 +99,7 @@ Se introducen los siguientes parámetros:
 
 **Figura 3. Configuración inicial**
 
-![Configuración](IMG/3.png)
+![Configuración](IMGCOS/3.png)
 
 **Análisis:**  
 Se utiliza el modo Learning para optimizar costes y simplificar la configuración.
@@ -108,7 +112,13 @@ Se revisa la configuración y se crea la cuenta.
 
 **Figura 4. Validación**
 
-![Deploy](IMG/4.png)
+![Deploy](IMGCOS/4.png)
+
+![Deploy](IMGCOS/3-4.png)
+
+![Deploy](IMGCOS/4-3.png)
+
+![Deploy](IMGCOS/fin4.png)
 
 ---
 
@@ -118,11 +128,6 @@ Se revisa la configuración y se crea la cuenta.
 
 Se accede a la sección **Data Explorer**.
 
-**Figura 5. Data Explorer**
-
-![Explorer](IMG/5.png)
-
----
 
 ## Paso 2. Quick Start
 
@@ -134,7 +139,9 @@ Se selecciona **Launch Quick Start** para crear automáticamente:
 
 **Figura 6. Quick Start**
 
-![Quick start](IMG/6.png)
+![Explorer](IMGCOS/5.png)
+
+![Explorer](IMGCOS/6.png)
 
 ---
 
@@ -156,7 +163,7 @@ Se accede a la sección **Items** del contenedor.
 
 **Figura 7. Items**
 
-![Items](IMG/7.png)
+![Explorer](IMGCOS/5-6.png)
 
 ---
 
@@ -177,7 +184,7 @@ Se crea un nuevo elemento JSON:
 
 **Figura 8. Inserción de JSON**
 
-![Insert](IMG/8.png)
+![Insert](IMGCOS/7.png)
 
 ---
 
@@ -189,6 +196,9 @@ Tras guardar el documento, Cosmos DB añade automáticamente metadatos internos 
 - `_etag`
 - `_ts`
 - `_self`
+
+![Insert](IMGCOS/8.png)
+
 
 ---
 
@@ -204,7 +214,7 @@ SELECT * FROM c
 
 **Figura 9. Query básica**
 
-![Query1](IMG/9.png)
+![Query1](IMGCOS/9.png)
 
 ---
 
@@ -220,7 +230,7 @@ WHERE CONTAINS(c.name, "Helmet")
 
 **Figura 10. Query filtrada**
 
-![Query2](IMG/10.png)
+![Query2](IMGCOS/10.png)
 
 ---
 
@@ -260,7 +270,9 @@ Se elimina el grupo de recursos para evitar costes adicionales.
 
 **Figura 11. Eliminación de recursos**
 
-![Delete RG](IMG/11.png)
+![Delete RG](IMGCOS/11.png)
+
+![Delete RG](IMGCOS/12.png)
 
 ---
 
