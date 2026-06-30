@@ -735,4 +735,233 @@ El procesamiento en tiempo real permite reaccionar inmediatamente a los eventos,
 - Delta Lake
 - Microsoft Fabric Real-Time Intelligence
 
-- 
+---
+
+# 📊 Explore Fundamentals of Data Visualization
+
+> [!NOTE]
+> La visualización de datos es una parte clave de la Business Intelligence (BI), ya que permite transformar datos complejos en información visual para la toma de decisiones.
+
+---
+
+# 🖥️ Microsoft Power BI
+
+Microsoft Power BI es la principal herramienta de Business Intelligence de Microsoft. Permite crear informes interactivos y modelos de datos a partir de múltiples fuentes.
+
+<p align="center">
+  <img src="IMG/13.png" alt="Microsoft Power BI" width="850">
+</p>
+
+## 🔄 Flujo de trabajo de Power BI
+
+El flujo típico en Power BI es:
+
+```text
+Conectar datos → Transformar → Modelar → Visualizar → Publicar
+```
+
+### Fases principales:
+
+- **Conexión de datos**: múltiples orígenes (SQL, Excel, Azure, APIs, etc.)
+- **Transformación**: limpieza y preparación con Power Query
+- **Modelado**: relaciones, tablas, medidas y jerarquías con DAX
+- **Visualización**: creación de gráficos e informes
+- **Publicación**: compartición en Power BI Service
+
+---
+
+# ☁️ Power BI en Microsoft Fabric
+
+Power BI está integrado en Microsoft Fabric, compartiendo almacenamiento en **OneLake**.
+
+### Características clave en Fabric:
+
+- **Espacios de trabajo**: colaboración en la nube.
+- **Modelos semánticos**: estructura de datos reutilizable.
+- **Direct Lake**: consulta directa a datos en OneLake sin importación.
+- **Edición web**: creación de informes sin Power BI Desktop.
+
+---
+
+# 🤖 IA en Power BI
+
+Power BI incluye capacidades de inteligencia artificial para facilitar el análisis.
+
+## Copilot en Power BI
+
+- Resume informes automáticamente.
+- Genera páginas de informes.
+- Crea medidas DAX con lenguaje natural.
+
+## Otras funciones de IA
+
+- **Narrativas inteligentes**: resumen automático de visualizaciones.
+
+---
+
+# 🧠 Modelado de datos
+
+El modelado de datos organiza la información para su análisis.
+
+## Medidas y dimensiones
+
+- **Medidas**: valores numéricos (ventas, ingresos, cantidad).
+- **Dimensiones**: categorías (cliente, producto, tiempo).
+
+---
+
+## 📐 Esquema estrella (Star Schema)
+
+Modelo más común en BI:
+
+- Tabla de hechos (datos numéricos)
+- Tablas de dimensiones (contexto)
+
+<p align="center">
+  <img src="IMG/14.png" alt="Star Schema" width="700">
+</p>
+
+## 📌 Esquema copo de nieve
+
+Variante del esquema estrella con dimensiones normalizadas.
+
+---
+
+## 🕒 Jerarquías
+
+Permiten analizar datos por niveles:
+
+- Tiempo: Año → Mes → Día
+- Productos: Categoría → Subcategoría → Producto
+- Ubicación: País → Ciudad
+
+<p align="center">
+  <img src="IMG/15.png" alt="Jerarquías de datos" width="850">
+</p>
+
+---
+
+## 🧩 Modelo semántico en Power BI
+
+Define:
+
+- Tablas
+- Relaciones
+- Jerarquías
+- Medidas DAX
+
+<p align="center">
+  <img src="IMG/16.png" alt="Modelo semántico Power BI" width="850">
+</p>
+
+> [!TIP]
+> Power BI usa el motor en memoria VertiPaq para consultas rápidas.
+
+---
+
+# 📈 Tipos de visualización
+
+## 📋 Tablas y tarjetas
+
+- Muestran datos detallados o métricas clave.
+
+<p align="center">
+  <img src="IMG/17.png" alt="Tablas y tarjetas" width="850">
+</p>
+
+---
+
+## 📊 Gráficos de barras y columnas
+
+- Comparación entre categorías.
+
+<p align="center">
+  <img src="IMG/18.png" alt="Barras y columnas" width="850">
+</p>
+
+---
+
+## 📉 Gráficos de líneas
+
+- Tendencias a lo largo del tiempo.
+
+<p align="center">
+  <img src="IMG/19.png" alt="Gráficos de líneas" width="850">
+</p>
+
+---
+
+## 🥧 Gráficos circulares
+
+- Proporciones de un total.
+
+<p align="center">
+  <img src="IMG/20.png" alt="Gráficos circulares" width="850">
+</p>
+
+---
+
+## 📍 Diagramas de dispersión
+
+- Relación entre dos variables.
+
+<p align="center">
+  <img src="IMG/21.png" alt="Dispersión" width="850">
+</p>
+
+---
+
+## 🌍 Mapas
+
+- Análisis geográfico de datos.
+
+<p align="center">
+  <img src="IMG/21.png" alt="Mapas" width="850">
+</p>
+
+---
+
+# 🔄 Informes interactivos
+
+En Power BI, las visualizaciones están conectadas entre sí:
+
+- Seleccionar un dato filtra el resto del informe.
+- Permite exploración dinámica de la información.
+
+<p align="center">
+  <img src="IMG/22.png" alt="Interactividad Power BI" width="850">
+</p>
+
+---
+
+# 🤖 Visualizaciones con IA
+
+Power BI incluye herramientas inteligentes:
+
+- **Narrativas automáticas**: explicaciones de gráficos.
+- **Q&A**: preguntas en lenguaje natural.
+- **Influenciadores clave**: factores que afectan métricas.
+- **Árbol de descomposición**: análisis detallado de causas.
+
+---
+
+# 📌 Resumen
+
+Power BI permite transformar datos en información visual interactiva. Integrado con Microsoft Fabric, ofrece modelado, análisis e inteligencia artificial para mejorar la toma de decisiones.
+
+---
+
+# 🧠 Conceptos clave
+
+- Business Intelligence (BI)
+- Microsoft Power BI
+- Power Query
+- DAX
+- Modelo semántico
+- Esquema estrella
+- Jerarquías
+- VertiPaq
+- Direct Lake
+- Visualización de datos
+- Dashboards
+- Copilot
