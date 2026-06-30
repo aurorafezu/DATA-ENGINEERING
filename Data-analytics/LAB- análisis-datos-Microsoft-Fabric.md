@@ -86,7 +86,7 @@ SELECT
 FROM taxi_rides
 GROUP BY DATENAME(dw, lpepPickupDatetime)
 
-📸 ![Paso 6](IMGL1/20.png)
+📸 ![Paso 2](IMGL1/20.png)
 
 
 ## 6️⃣ Eliminación 
