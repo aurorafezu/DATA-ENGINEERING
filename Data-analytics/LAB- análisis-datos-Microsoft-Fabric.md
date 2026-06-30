@@ -85,7 +85,7 @@ SELECT
     AVG(tripDistance) AS AvgDistance
 FROM taxi_rides
 GROUP BY DATENAME(dw, lpepPickupDatetime)
---
+```
 
 📸 ![Paso 2](IMGL1/20.png)
 
