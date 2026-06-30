@@ -487,3 +487,252 @@ Es una excelente opción para equipos de ingeniería de datos y Machine Learning
 - Copilot
 - Genie
 - Power BI
+
+
+# Explore Fundamentals of Real-Time Analytics
+
+## Introducción
+
+El aumento del uso de la tecnología, los dispositivos inteligentes y la conectividad constante ha provocado un crecimiento masivo en la generación de datos. Muchos de estos datos pueden procesarse en tiempo real o casi en tiempo real como un flujo continuo, permitiendo la creación de sistemas que reaccionan de forma inmediata a los eventos.
+
+> [!NOTE]
+> Este módulo ofrece una visión conceptual del procesamiento en tiempo real y los servicios de Azure asociados. No entra en detalles de implementación.
+
+---
+
+# Procesamiento por lotes vs procesamiento en streaming
+
+El procesamiento de datos convierte datos en bruto en información útil. Existen dos enfoques principales:
+
+## Procesamiento por lotes (Batch)
+
+Los datos se recopilan y procesan en bloques.
+
+- Se agrupan múltiples registros
+- Se procesan en un momento concreto
+- Puede ser por tiempo o por volumen
+
+### Ejemplo
+
+Contar coches en una carretera como si se recogieran en un aparcamiento antes de analizarlos.
+
+<p align="center">
+  <img src="IMG/7.png" alt="Batch processing" width="850">
+</p>
+
+### Ventajas
+
+- Alto rendimiento con grandes volúmenes
+- Uso eficiente del sistema
+- Permite procesamientos programados
+
+### Desventajas
+
+- Alta latencia
+- No hay resultados inmediatos
+- Errores pueden afectar a todo el lote
+
+---
+
+## Procesamiento en streaming
+
+Los datos se procesan individualmente a medida que llegan.
+
+- Procesamiento en tiempo real
+- Sin esperar a lotes
+- Ideal para eventos continuos
+
+### Ejemplo
+
+Contar coches en tiempo real mientras pasan.
+
+<p align="center">
+  <img src="IMG/8.png" alt="Streaming processing" width="850">
+</p>
+
+### Casos reales
+
+- Bolsa en tiempo real
+- Videojuegos online
+- Recomendaciones basadas en geolocalización
+
+---
+
+## Diferencias clave
+
+| Aspecto | Batch | Streaming |
+|----------|------|----------|
+| Latencia | Alta (horas) | Baja (ms/segundos) |
+| Datos | Históricos completos | Datos recientes |
+| Uso | Análisis complejo | Respuesta inmediata |
+| Procesamiento | Grandes volúmenes | Eventos individuales |
+
+---
+
+# Arquitectura combinada (Lambda)
+
+Muchas soluciones combinan ambos enfoques:
+
+<p align="center">
+  <img src="IMG/9.png" alt="Lambda architecture" width="850">
+</p>
+
+## Flujo general
+
+- Los datos en streaming se capturan en tiempo real
+- Los datos batch se almacenan para análisis histórico
+- Ambos se combinan para análisis completo
+
+## Nota
+
+> [!NOTE]
+> La arquitectura Kappa es una alternativa moderna que trata todo como streaming continuo.
+
+---
+
+# Arquitectura de procesamiento en streaming
+
+Una arquitectura típica incluye:
+
+<p align="center">
+  <img src="IMG/10.png" alt="Streaming architecture" width="850">
+</p>
+
+## Componentes
+
+### 1. Fuente de eventos
+
+- Sensores
+- Logs
+- Redes sociales
+- Aplicaciones
+
+### 2. Ingesta de datos
+
+Puede ser:
+
+- Cola de mensajes
+- Azure Event Hubs
+- Azure IoT Hub
+
+### 3. Procesamiento
+
+- Filtros
+- Agregaciones
+- Ventanas temporales
+
+### 4. Salida (sink)
+
+- Bases de datos
+- Dashboards
+- Archivos
+- Colas
+
+---
+
+# Servicios de análisis en tiempo real en Azure
+
+## Microsoft Fabric Real-Time Intelligence
+
+Incluye un conjunto completo de herramientas:
+
+- Eventstream
+- Eventhouse
+- Real-Time Dashboards
+- Activator
+
+<p align="center">
+  <img src="IMG/11.png" alt="Fabric Real-Time Intelligence" width="850">
+</p>
+
+### Características
+
+- Ingesta en tiempo real
+- Consultas con KQL
+- Dashboards en vivo
+- Automatización de acciones
+
+---
+
+## Azure Stream Analytics
+
+- Servicio PaaS
+- Procesamiento de flujos con consultas SQL
+- Integración con múltiples fuentes
+
+---
+
+## Spark Structured Streaming
+
+Permite tratar flujos como tablas dinámicas.
+
+### Funcionamiento
+
+1. Conexión a fuente de streaming
+2. Datos en DataFrame continuo
+3. Consulta en tiempo real
+4. Salida a sink
+
+<p align="center">
+  <img src="IMG/12.png" alt="Spark Structured Streaming" width="850">
+</p>
+
+---
+
+## Delta Lake
+
+Formato de almacenamiento que mejora los Data Lakes.
+
+### Características
+
+- Transacciones ACID
+- Control de esquemas
+- Batch + streaming unificado
+
+### Ventajas
+
+- Consistencia de datos
+- Fiabilidad
+- Integración con Spark
+
+---
+
+# Fuentes de datos en streaming
+
+- Azure Event Hubs
+- Azure IoT Hub
+- Azure Data Lake Storage Gen2
+- Apache Kafka
+
+---
+
+# Destinos (sinks)
+
+- Azure SQL Database
+- Microsoft Fabric
+- Power BI
+- Azure Data Lake Storage
+- Azure Blob Storage
+
+---
+
+# Resumen
+
+El procesamiento en tiempo real permite reaccionar inmediatamente a los eventos, complementando el análisis histórico basado en batch.
+
+---
+
+# Conceptos clave
+
+- Batch Processing
+- Stream Processing
+- Lambda Architecture
+- Kappa Architecture
+- Event Hubs
+- IoT Hub
+- KQL
+- Spark Structured Streaming
+- Delta Lake
+- Microsoft Fabric Real-Time Intelligence
+
+- 
