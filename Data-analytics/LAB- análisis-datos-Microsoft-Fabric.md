@@ -70,14 +70,53 @@ La copia a funcionado, por lo que esperamos que muestre tablas completada u exit
 
 📸 ![Paso 4](IMGL1/17.png)
 
-## 5️⃣ Explorar datos
-Ruta: Tables → dbo → taxi_rides  
+## 📂 5️⃣ Exploración de datos en el Lakehouse
 
-📸 ![Paso 5](IMGL1/18.png)
+Una vez cargados los datos en el Lakehouse, podemos acceder a la tabla para revisarlos y validar que la ingesta se realizó correctamente.
 
-## 6️⃣ Consulta SQL
+---
 
-📸 ![Paso 6](IMGL1/19.png)
+### 👀 Visualización de datos
+
+En esta sección puedes explorar el contenido de la tabla directamente desde Microsoft Fabric.
+
+📸 Captura:
+
+![Paso 5](IMGL1/18.png)
+
+---
+
+### 💡 Nota
+
+Esta tabla contiene los datos del dataset NYC Taxi, que posteriormente se utilizarán en consultas SQL para análisis.
+
+## 📊 6️⃣ Consulta de datos en el Lakehouse (SQL)
+
+Ahora que los datos ya están cargados en la tabla del Lakehouse, podemos analizarlos utilizando SQL.
+
+💡 **Consejo:** Las tablas de un Lakehouse son totalmente compatibles con SQL, lo que permite analizar los datos sin moverlos a otro sistema.
+
+![Paso 5](IMGL1/19.png)
+
+---
+
+### 🚀 Acceder al endpoint SQL
+
+En la parte superior derecha del Lakehouse:
+
+- Selecciona **Analizar datos con**
+- Luego selecciona **Endpoint de análisis SQL**
+
+💡 Este endpoint está optimizado para ejecutar consultas SQL sobre las tablas del Lakehouse y se integra con herramientas de análisis conocidas.
+
+---
+
+### 🧾 Ejecutar consulta SQL
+
+En la barra de herramientas:
+
+- Selecciona **Nueva consulta SQL**
+- Copia y ejecuta la siguiente consulta:
 
 ```sql
 SELECT  
@@ -85,13 +124,34 @@ SELECT
     AVG(tripDistance) AS AvgDistance
 FROM taxi_rides
 GROUP BY DATENAME(dw, lpepPickupDatetime)
-```
 
-📸 ![Paso 2](IMGL1/20.png)
+![Paso 5](IMGL1/20.png)
 
+## 🧹 7️⃣ Limpieza de recursos
 
-## 6️⃣ Eliminación 
+Si has terminado de explorar Microsoft Fabric, puedes eliminar el espacio de trabajo que creaste para este ejercicio.
 
-📸 ![Paso 7](IMGL1/21.png)
+💡 **Consejo:** Eliminar el espacio de trabajo elimina todos los elementos creados en el laboratorio y ayuda a evitar cargos continuos.
 
-📸 ![Paso 7](IMGL1/22.png)
+---
+
+### 📌 Pasos para eliminar el workspace:
+
+1. En la barra lateral izquierda, selecciona el icono de tu espacio de trabajo para ver todos los elementos que contiene.  
+
+2. En la barra de herramientas, selecciona **Configuración del espacio de trabajo**.  
+
+3. En la sección **General**, selecciona **Eliminar este espacio de trabajo**.  
+
+---
+
+📸 Añade aquí capturas del proceso:
+
+- Workspace abierto  
+  ![Paso 7 - 1](IMGL1/21.png)
+
+- Configuración del workspace  
+  ![Paso 7 - 2](IMGL1/22.png)
+
+- Eliminación confirmada  
+  ![Paso 7 - 3](IMGL1/23.png)
