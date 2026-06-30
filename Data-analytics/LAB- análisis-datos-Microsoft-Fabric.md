@@ -155,5 +155,3 @@ Si has terminado de explorar Microsoft Fabric, puedes eliminar el espacio de tra
 - Configuración del workspace  
   ![Paso 7 - 2](IMGL1/22.png)
 
-- Eliminación confirmada  
-  ![Paso 7 - 3](IMGL1/23.png)
