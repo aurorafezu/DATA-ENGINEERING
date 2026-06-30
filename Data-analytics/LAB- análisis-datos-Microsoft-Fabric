@@ -1,6 +1,8 @@
 # 📊 Laboratorio: Análisis de datos en Microsoft Fabric
 
-Este repositorio documenta el laboratorio de análisis de datos en Microsoft Fabric, donde se ingieren, almacenan y consultan datos usando un Lakehouse y SQL.
+Este laboratorio muestra cómo usar Microsoft Fabric para cargar y analizar datos del dataset NYC Taxi usando un Lakehouse y SQL.
+
+---
 
 ## 🧠 Objetivo
 
@@ -10,20 +12,30 @@ Este repositorio documenta el laboratorio de análisis de datos en Microsoft Fab
 - Consultar datos con SQL  
 - Limpiar recursos  
 
+---
+
 ## 🗂️ Dataset
 
-🚖 NYC Taxi - Green Dataset  
-Incluye información de viajes como fechas, distancia, tarifas y pasajeros.
+NYC Taxi - Green Dataset  
+Incluye:
+- Fecha de recogida y bajada  
+- Distancia  
+- Tarifas  
+- Pasajeros  
 
-# 🚀 Pasos del laboratorio
+---
 
-## 1. Acceso a Microsoft Fabric
+## 🚀 Pasos del laboratorio
+
+### 1️⃣ Acceso a Microsoft Fabric
 
 https://app.fabric.microsoft.com/home?experience=fabric
 
 ![Paso 1](IMG/1.png)
 
-## 2. Crear Workspace
+---
+
+### 2️⃣ Crear Workspace
 
 - Workspaces → New workspace  
 - Nombre: dp900-fabric-lakehouse  
@@ -31,7 +43,9 @@ https://app.fabric.microsoft.com/home?experience=fabric
 ![Paso 2](IMG/2.png)
 ![Paso 2 vacío](IMG/3.png)
 
-## 3. Crear Lakehouse
+---
+
+### 3️⃣ Crear Lakehouse
 
 - New item → Lakehouse  
 - Nombre: taxi_lakehouse  
@@ -39,16 +53,17 @@ https://app.fabric.microsoft.com/home?experience=fabric
 ![Paso 3](IMG/4.png)
 ![Paso 3 view](IMG/5.png)
 
-## 4. Ingesta de datos (Copy Job)
+---
 
-- Get Data → New Copy Job  
-- Dataset: NYC Taxi - Green  
+### 4️⃣ Ingesta de datos (Copy Job)
+
+Dataset: NYC Taxi - Green  
 
 Configuración:
 - Full copy  
-- Destination: Tables  
-- Schema: dbo  
-- Table: taxi_rides  
+- Tables  
+- dbo  
+- taxi_rides  
 
 ![Paso 4](IMG/6.png)
 ![Paso 4](IMG/7.png)
@@ -56,13 +71,17 @@ Configuración:
 ![Paso 4](IMG/9.png)
 ![Paso 4](IMG/10.png)
 
-## 5. Exploración de datos
+---
 
-Tables > dbo > taxi_rides  
+### 5️⃣ Exploración de datos
+
+Tables → dbo → taxi_rides  
 
 ![Paso 5](IMG/11.png)
 
-## 6. Consulta SQL
+---
+
+### 6️⃣ Consulta SQL
 
 ```sql
 SELECT  
