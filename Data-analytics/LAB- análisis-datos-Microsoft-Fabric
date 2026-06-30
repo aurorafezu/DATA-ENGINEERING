@@ -1,63 +1,37 @@
-# 📊 Laboratorio: Análisis de datos en Microsoft Fabric
+# 📊 Laboratorio: Microsoft Fabric - Análisis de datos
 
-Este laboratorio muestra cómo usar Microsoft Fabric para cargar y analizar datos del dataset NYC Taxi usando un Lakehouse y SQL.
+## 🧠 Descripción
+En este laboratorio utilizamos Microsoft Fabric para crear un Workspace, un Lakehouse, cargar datos del dataset NYC Taxi, consultarlos con SQL y eliminar recursos.
 
----
+# 🚀 PASO A PASO
 
-## 🧠 Objetivo
+## 1️⃣ Acceder a Microsoft Fabric
+Entra en:
+https://app.fabric.microsoft.com/home?experience=fabric  
+Inicia sesión y asegúrate de estar en la experiencia Fabric.
 
-- Crear un Workspace en Microsoft Fabric  
-- Crear un Lakehouse  
-- Ingerir datos con Copy Job  
-- Consultar datos con SQL  
-- Limpiar recursos  
+📸 ![Paso 1](IMG/1.png)
 
----
-
-## 🗂️ Dataset
-
-NYC Taxi - Green Dataset  
-Incluye:
-- Fecha de recogida y bajada  
-- Distancia  
-- Tarifas  
-- Pasajeros  
-
----
-
-## 🚀 Pasos del laboratorio
-
-### 1️⃣ Acceso a Microsoft Fabric
-
-https://app.fabric.microsoft.com/home?experience=fabric
-
-![Paso 1](IMG/1.png)
-
----
-
-### 2️⃣ Crear Workspace
-
-- Workspaces → New workspace  
+## 2️⃣ Crear Workspace
+- Ve a Workspaces  
+- New workspace  
 - Nombre: dp900-fabric-lakehouse  
 
-![Paso 2](IMG/2.png)
-![Paso 2 vacío](IMG/3.png)
+📸 ![Paso 2](IMG/2.png)
+📸 ![Paso 2](IMG/3.png)
 
----
-
-### 3️⃣ Crear Lakehouse
-
-- New item → Lakehouse  
+## 3️⃣ Crear Lakehouse
+- New item  
+- Lakehouse  
 - Nombre: taxi_lakehouse  
 
-![Paso 3](IMG/4.png)
-![Paso 3 view](IMG/5.png)
+📸 ![Paso 3](IMG/4.png)
+📸 ![Paso 3](IMG/5.png)
 
----
-
-### 4️⃣ Ingesta de datos (Copy Job)
-
-Dataset: NYC Taxi - Green  
+## 4️⃣ Ingesta de datos (Copy Job)
+- Get data → New copy job  
+- Dataset: NYC Taxi - Green  
+- Nombre: Ingest Data  
 
 Configuración:
 - Full copy  
@@ -65,24 +39,18 @@ Configuración:
 - dbo  
 - taxi_rides  
 
-![Paso 4](IMG/6.png)
-![Paso 4](IMG/7.png)
-![Paso 4](IMG/8.png)
-![Paso 4](IMG/9.png)
-![Paso 4](IMG/10.png)
+📸 ![Paso 4](IMG/6.png)
+📸 ![Paso 4](IMG/7.png)
+📸 ![Paso 4](IMG/8.png)
+📸 ![Paso 4](IMG/9.png)
+📸 ![Paso 4](IMG/10.png)
 
----
+## 5️⃣ Explorar datos
+Ruta: Tables → dbo → taxi_rides  
 
-### 5️⃣ Exploración de datos
+📸 ![Paso 5](IMG/11.png)
 
-Tables → dbo → taxi_rides  
-
-![Paso 5](IMG/11.png)
-
----
-
-### 6️⃣ Consulta SQL
-
+## 6️⃣ Consulta SQL
 ```sql
 SELECT  
     DATENAME(dw, lpepPickupDatetime) AS Day,
