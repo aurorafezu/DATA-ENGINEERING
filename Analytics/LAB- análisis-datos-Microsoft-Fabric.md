@@ -88,6 +88,7 @@ GROUP BY DATENAME(dw, lpepPickupDatetime)
 
 📸 ![Paso 6](IMGL1/20.png)
 
+
 ## 6️⃣ Eliminación 
 
 📸 ![Paso 7](IMGL1/21.png)
