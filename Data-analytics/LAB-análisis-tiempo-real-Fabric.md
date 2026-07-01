@@ -34,8 +34,11 @@ https://app.fabric.microsoft.com/home?experience=fabric
 
 📸 ![Paso 2](IMGL2/2.png)
 
-📸 Workspace creado:
 ![Paso 2](IMGL2/3.png)
+
+📸 Workspace creado:
+
+📸 ![Paso 3](IMGL2/4.png)
 
 ---
 
@@ -44,7 +47,7 @@ https://app.fabric.microsoft.com/home?experience=fabric
 - En el menú izquierdo selecciona **Real-Time hub**
 - Entra en **Data sources**
 
-📸 ![Paso 3](IMGL2/4.png)
+📸 ![Paso 4](IMGL2/5.png)
 
 ---
 
@@ -57,10 +60,17 @@ https://app.fabric.microsoft.com/home?experience=fabric
   - Source name: `taxi`
   - Eventstream name: `taxi-data-stream`
 
-📸 ![Paso 4](IMGL2/5.png)
+![Paso 4](IMGL2/6.png)
 
 📸 Configuración:
-![Paso 4](IMGL2/6.png)
+
+📸 ![Paso 5](IMGL2/7.png)
+
+![Paso 5](IMGL2/8.png)
+
+📸 ![Paso 6](IMGL2/9.png)
+
+![Paso 6](IMGL2/10.png)
 
 ---
 
@@ -70,10 +80,11 @@ https://app.fabric.microsoft.com/home?experience=fabric
 - Pulsa **Create eventstream**
 - Espera a que el estado sea correcto
 
-📸 ![Paso 5](IMGL2/7.png)
+![Paso 6](IMGL2/11.png)
 
 📸 Eventstream creado:
-![Paso 5](IMGL2/8.png)
+
+📸 ![Paso 7](IMGL2/12.png)
 
 ---
 
@@ -86,13 +97,22 @@ https://app.fabric.microsoft.com/home?experience=fabric
   - Tabla: `yellow-taxi`
 - Activar ingestión automática
 
-📸 ![Paso 6](IMGL2/9.png)
+![Paso 7](IMGL2/13.png)
 
 📸 Configuración:
-![Paso 6](IMGL2/10.png)
+
+📸 ![Paso 8](IMGL2/14.png)
+
+![Paso 8](IMGL2/15.png)
+
+![Paso 8](IMGL2/16.png)
+
 
 📸 Tabla creada:
-![Paso 6](IMGL2/11.png)
+
+![Paso 8](IMGL2/17.png)
+
+![Paso 8](IMGL2/18.png)
 
 ---
 
@@ -101,10 +121,11 @@ https://app.fabric.microsoft.com/home?experience=fabric
 - Pulsa **Publish**
 - Espera a estado **Live**
 
-📸 ![Paso 7](IMGL2/12.png)
+![Paso 8](IMGL2/19.png)
 
 📸 Flujo activo:
-![Paso 7](IMGL2/13.png)
+
+📸 ![Paso 10](IMGL2/20.png)
 
 ---
 
@@ -114,10 +135,41 @@ https://app.fabric.microsoft.com/home?experience=fabric
 - Selecciona tabla `yellow-taxi`
 - Ve a **Data preview**
 
-📸 ![Paso 8](IMGL2/14.png)
+📸 ![Paso 10](IMGL2/21.png)
+
+📸 ![Paso 10](IMGL2/22.png)
 
 📸 Datos en streaming:
-![Paso 8](IMGL2/15.png)
+
+📸 ![Paso 10](IMGL2/22.png)
+
+---
+
+## 9️⃣ Consultar los datos capturados (KQL)
+1. Ve a tu espacio de trabajo y selecciona la base de datos `taxi-eventhouse`.
+2. Selecciona el `taxi-eventhouse_queryset`.
+
+📸 ![Paso 10](IMGL2/23.png)
+  
+4. Borra el contenido y ejecuta esta consulta para ver 100 filas:
+```kql
+['yellow-taxi']
+| take 10
+```
+
+📸 ![Paso 10](IMGL2/24.png)
+
+Sustituye la consulta por esta para ver recogidas por hora:
+
+Fragmento de código
+['yellow-taxi']
+| summarize PickupCount = count() by bin(todatetime(tpep_pickup_datetime), 1h)
+
+📸 ![Paso 10](IMGL2/25.png)
+
+Selecciona Table 1 (el resultado) y añade un visual tipo Column chart.
+
+📸 ![Paso 10](IMGL2/26.png)
 
 ---
 
@@ -134,22 +186,11 @@ Si has terminado de explorar la Inteligencia en Tiempo Real de Microsoft Fabric,
 ### 📌 Pasos para eliminar el workspace
 
 1. En la barra lateral izquierda, selecciona el icono de **Workspaces** y abre tu espacio de trabajo `dp900-realtime`.
-
-📸 ![Paso 10](IMGL2/20.png)
-
----
-
 2. En la barra de herramientas, selecciona **Workspace settings**.
-
-📸 ![Paso 10](IMGL2/21.png)
-
----
-
 3. En la sección **General**, desplázate hacia abajo y selecciona **Delete this workspace**.
 
-📸 ![Paso 10](IMGL2/22.png)
+📸 ![Paso 10](IMGL2/27.png)
 
----
 
 ### ⚠️ Confirmación final
 
