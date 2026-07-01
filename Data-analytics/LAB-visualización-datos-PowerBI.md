@@ -7,7 +7,8 @@ En este laboratorio, aprenderás a convertir datos en bruto en un informe intera
 ## 1️⃣ Instalar Power BI Desktop
 1. Descarga el instalador desde [https://aka.ms/power-bi-desktop](https://aka.ms/power-bi-desktop).
 2. Ejecuta el asistente de configuración en tu equipo Windows.
-                                                ![Paso 1](IMGL3/1.png)
+
+![Paso 1](IMGL3/1.png)
 
 ---
 
@@ -27,34 +28,35 @@ Abre Power BI Desktop e importa los tres conjuntos de datos (clientes, productos
 ![Paso 5](IMGL3/5.png)
 ![Paso 6](IMGL3/6.png)
 ![Paso 7](IMGL3/7.png)
+![Paso 8](IMGL3/8.png)
+![Paso 9](IMGL3/9.png)
+![Paso 10](IMGL3/10.png)
+![Paso 11](IMGL3/11.png)
 
 ---
 
 ## 3️⃣ Explorar y refinar el modelo de datos
 1. En el borde izquierdo, selecciona la **pestaña Modelo**.
-![Paso 8](IMGL3/8.png)
-2. En la tabla de **Pedidos**, selecciona el campo **Ingresos** y cambia su formato a **Moneda** en el panel de Propiedades.
-![Paso 9](IMGL3/9.png)
-3. En la tabla de **Productos**, haz clic derecho en **Categoría** > **Crear jerarquía**.
-4. Añade **Nombreproducto** a esa jerarquía y renómbrala como **Producto Categorizado**.
-![Paso 10](IMGL3/10.png)
-![Paso 11](IMGL3/11.png)
 ![Paso 12](IMGL3/12.png)
-5. En la vista de tabla, selecciona la columna **Ciudad** de la tabla **Clientes** y establece su *Categoría de datos* como **Ciudad**.
+2. En la tabla de **Pedidos**, selecciona el campo **Ingresos** y cambia su formato a **Moneda** en el panel de Propiedades.
 ![Paso 13](IMGL3/13.png)
+3. En la tabla de **Productos**, haz clic derecho en **Categoría** > **Crear jerarquía**.
 ![Paso 14](IMGL3/14.png)
+5. Añade **Nombreproducto** a esa jerarquía y renómbrala como **Producto Categorizado**.
+![Paso 15](IMGL3/15.png)
+
+6. En la vista de tabla, selecciona la columna **Ciudad** de la tabla **Clientes** y establece su *Categoría de datos* como **Ciudad**.
+![Paso 16](IMGL3/16.png)
 
 ---
 
 ## 4️⃣ Crear el informe
 1. Ve a **Archivo** > **Opciones y configuración** > **Opciones**. En **Seguridad**, activa **Usar Mapa y Visuales de Mapa Rellenado**.
-![Paso 15](IMGL3/15.png)
-2. Selecciona la pestaña **Vista de informe**.
-![Paso 16](IMGL3/16.png)
-3. Añade un **Cuadro de texto** con el título "Informe de Ventas" (fuente 32, negrita).
 ![Paso 17](IMGL3/17.png)
-4. Selecciona el campo **Producto Categorizado** para crear una tabla y añade el campo **Ingresos**.
+2. Selecciona la pestaña **Vista de informe**.
+3. Añade un **Cuadro de texto** con el título "Informe de Ventas" (fuente 32, negrita).
 ![Paso 18](IMGL3/18.png)
+4. Selecciona el campo **Producto Categorizado** para crear una tabla y añade el campo **Ingresos**.
 ![Paso 19](IMGL3/19.png)
 5. Cambia la visualización a **Gráfico de columnas apiladas**. Activa el icono de "desglose" (flecha hacia abajo) para explorar niveles.
 ![Paso 20](IMGL3/20.png)
