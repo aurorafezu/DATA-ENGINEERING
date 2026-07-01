@@ -7,7 +7,7 @@ En este laboratorio, aprenderás a convertir datos en bruto en un informe intera
 ## 1️⃣ Instalar Power BI Desktop
 1. Descarga el instalador desde [https://aka.ms/power-bi-desktop](https://aka.ms/power-bi-desktop).
 2. Ejecuta el asistente de configuración en tu equipo Windows.
-![Paso 1](IMGL3/1.png)
+                                                ![Paso 1](IMGL3/1.png)
 
 ---
 
