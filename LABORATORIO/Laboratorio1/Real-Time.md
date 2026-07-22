@@ -297,9 +297,7 @@ Workspace → Settings → Delete this Workspace
 
 Confirmamos la eliminación.
 
-## Captura
-
-> *(Insertar captura antes de eliminar el Workspace)*
+![Paso120](IMG/FIN.png)
 
 ---
 
