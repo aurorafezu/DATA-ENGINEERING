@@ -26,7 +26,7 @@ En el menú izquierdo seleccionamos **Workspaces** y pulsamos **New Workspace**.
 
 Configuramos:
 
-- **Nombre:** (el que prefieras)
+- **Nombre:** aurorafabric
 - **Licencia:** Fabric Trial / Premium / Fabric
 
 Cuando termine aparecerá el Workspace vacío.
@@ -69,7 +69,8 @@ Comprobaremos que aparece el flujo de datos en el lienzo.
 
 ## Captura
 
-> *(Insertar captura del Eventstream)*
+![Paso 1](IMG/1.png)
+![Paso 1](IMG/2.png)
 
 ---
 
@@ -78,6 +79,9 @@ Comprobaremos que aparece el flujo de datos en el lienzo.
 Desde el menú izquierdo seleccionamos:
 
 **Create → Eventhouse**
+
+![Paso 2](IMG/3.png)
+![Paso 2](IMG/4.png)
 
 Asignamos un nombre al Eventhouse.
 
