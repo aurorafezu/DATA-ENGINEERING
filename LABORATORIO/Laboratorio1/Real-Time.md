@@ -248,6 +248,8 @@ Ahora el Dashboard mostrará un gráfico de columnas.
 
 Desde el Dashboard seleccionamos:
 
+![Paso 10](IMG/33.png)
+
 **Set Alert**
 
 Configuramos:
@@ -263,9 +265,9 @@ Configuramos:
 
 Creamos la alerta.
 
-## Captura
-
-> *(Insertar captura de la configuración de la alerta)*
+![Paso 10](IMG/34.png)
+![Paso 10](IMG/35.png)
+![Paso 10](IMG/36.png)
 
 ---
 
@@ -281,9 +283,9 @@ Accedemos al historial de la alerta.
 
 Si el precio de alguna acción aumenta más de 100 unidades, la alerta quedará registrada y se enviará un correo electrónico.
 
-## Captura
-
-> *(Insertar captura del Activator)*
+![Paso 11](IMG/37.png)
+![Paso 11](IMG/39.png)
+![Paso 11](IMG/43.png)
 
 ---
 
