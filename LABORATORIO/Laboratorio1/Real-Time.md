@@ -170,7 +170,8 @@ Obtendremos las primeras 100 filas almacenadas.
 
 ## Captura
 
-> *(Insertar captura de la consulta)*
+![Paso 6](IMG/17.png)
+![Paso 6](IMG/18.png)
 
 ---
 
@@ -189,9 +190,8 @@ Esta consulta obtiene el precio medio de cada acción durante los últimos cinco
 
 Al volver a ejecutarla observaremos cómo los valores cambian continuamente al recibirse nuevos datos.
 
-## Captura
-
-> *(Insertar captura del resultado)*
+![Paso 7](IMG/19.png)
+![Paso 7](IMG/20.png)
 
 ---
 
