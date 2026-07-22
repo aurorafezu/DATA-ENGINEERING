@@ -203,6 +203,9 @@ Pulsamos:
 
 **Save to Dashboard**
 
+![Paso 8](IMG/21.png)
+![Paso 8](IMG/22.png)
+
 Configuramos:
 
 | Campo | Valor |
@@ -214,7 +217,9 @@ Abrimos el Dashboard creado.
 
 ## Captura
 
-> *(Insertar captura del Dashboard)*
+![Paso 8](IMG/23.png)
+![Paso 8](IMG/25.png)
+![Paso 8](IMG/27.png)
 
 ---
 
@@ -233,9 +238,9 @@ Aplicamos los cambios.
 
 Ahora el Dashboard mostrará un gráfico de columnas.
 
-## Captura
-
-> *(Insertar captura del gráfico)*
+![Paso 8](IMG/28.png)
+![Paso 8](IMG/29.png)
+![Paso 8](IMG/30.png)
 
 ---
 
