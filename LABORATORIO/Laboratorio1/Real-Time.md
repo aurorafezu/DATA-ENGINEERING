@@ -33,7 +33,7 @@ Cuando termine aparecerá el Workspace vacío.
 
 ## Captura
 
-> *(Insertar captura del Workspace recién creado)*
+![Paso 0](IMG/0.png)
 
 ---
 
@@ -93,7 +93,10 @@ Una vez creado veremos:
 
 ## Captura
 
-> *(Insertar captura del Eventhouse vacío)*
+![Paso 3](IMG/5.png)
+![Paso 3](IMG/6.png)
+![Paso 3](IMG/7.png)
+![Paso 3](IMG/8.png)
 
 ---
 
@@ -107,6 +110,8 @@ Seleccionamos:
 
 Eventstream → Existing Eventstream
 
+![Paso 4](IMG/9.png)
+
 Configuramos:
 
 | Campo | Valor |
@@ -116,13 +121,17 @@ Configuramos:
 | Eventstream | stock-data |
 | Connection | stock-table |
 
+![Paso 4](IMG/10.png)
+
 Pulsamos **Next** hasta finalizar el asistente.
+
+![Paso 4](IMG/11.png)
+![Paso 4](IMG/14.png)
+![Paso 4](IMG/15.png)
 
 Al terminar veremos creada la tabla **stock**.
 
-## Captura
-
-> *(Insertar captura de la tabla creada)*
+![Paso 4](IMG/16.png)
 
 ---
 
@@ -140,7 +149,7 @@ Esto confirma que los datos se están almacenando correctamente.
 
 ## Captura
 
-> *(Insertar captura del Eventstream con el destino conectado)*
+![Paso 4](IMG/16.png)
 
 ---
 
