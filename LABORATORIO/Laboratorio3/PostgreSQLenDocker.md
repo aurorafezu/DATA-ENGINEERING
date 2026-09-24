@@ -1,270 +1,270 @@
 # 🧑🏽‍💻Practica 04 - PostgreSQL en Docker para Ingeniería de Datos
 
-## Escenario
+## 1. Objetivo de la práctica
 
-Una empresa de ingeniería de datos recibe diariamente archivos CSV procedentes de sus sistemas de ventas.
+En esta práctica se ha trabajado con **PostgreSQL ejecutándose dentro de
+un contenedor Docker** en un servidor Ubuntu.
 
-El equipo necesita crear rápidamente una base de datos temporal para:
+El objetivo principal es simular un pequeño proceso de Ingeniería de
+Datos en el que partimos de un archivo CSV con información de ventas, lo
+introducimos en un contenedor PostgreSQL, almacenamos los datos en una
+tabla de staging y posteriormente realizamos diferentes consultas para
+comprobar y analizar la información.
 
-```
-ventas.csv
-     ↓
-PostgreSQL en Docker
-     ↓
-Tabla staging_ventas
-     ↓
-Consultas de validación
-```
+El flujo general realizado ha sido:
 
-En lugar de instalar PostgreSQL directamente en Ubuntu Server, vamos a ejecutarlo dentro de un contenedor Docker.
+**Archivo CSV → Docker → PostgreSQL → tabla staging → validación →
+análisis de datos**
 
-Todo se realizará desde:
+De esta forma, además de trabajar con PostgreSQL, se practican conceptos
+básicos de Docker como imágenes, contenedores, puertos, logs, ejecución
+de comandos dentro de contenedores, copia de archivos y gestión del
+ciclo de vida de un contenedor.
 
-```
-Windows
-   ↓
-Terminal de windows
-   ↓ SSH
-Ubuntu Server
-   ↓
-Docker Engine
-   ↓
-PostgreSQL Container
-```
+------------------------------------------------------------------------
+
+## 2. Entorno utilizado
+
+La práctica se ha realizado desde **Windows**, utilizando la **Terminal de Windows** para conectarme al servidor **Ubuntu Server mediante SSH**.
+
+Una vez establecida la conexión SSH, todas las operaciones de la práctica se realizan sobre el servidor Ubuntu, donde está instalado **Docker Engine**.
+
+El entorno utilizado es:
+
+**Windows**
+↓
+**Terminal de Windows**
+↓
+**Conexión SSH**
+↓
+**Ubuntu Server**
+↓
+**Docker Engine**
+↓
+**Contenedor PostgreSQL 16**
+
+La conexión mediante SSH permite trabajar con el servidor Ubuntu desde la Terminal de Windows como si se estuviera trabajando directamente en él. A partir de ahí, se utilizan los comandos de Docker para descargar la imagen de PostgreSQL, crear el contenedor y realizar las diferentes operaciones de la práctica.
 
 
----
+------------------------------------------------------------------------
 
-# 1. Comprobar Docker
+## 3. Comprobación de Docker
 
-Desde la terminal remota de **VS Code conectada a Ubuntu Server**:
+### Teoría
 
-```bash
+Antes de comenzar es necesario comprobar que Docker está correctamente
+instalado y funcionando en el servidor.
+
+Para ello se utiliza `docker --version`, que permite consultar la
+versión instalada de Docker.
+
+También se pueden consultar los contenedores existentes mediante
+`docker ps` y las imágenes disponibles mediante `docker images`.
+
+### Práctica
+
+Ejecuté el siguiente comando:
+
+``` bash
 docker --version
 ```
 
-Comprobamos los contenedores actuales:
+**Resultado:**
 
-```bash
+> 📸 **CAPTURA 1 --- Versión de Docker**
+
+La salida permite comprobar que Docker está instalado correctamente en
+el servidor.
+
+A continuación comprobé los contenedores que estaban actualmente en
+ejecución:
+
+``` bash
 docker ps
 ```
 
-Y las imágenes disponibles:
+**Resultado:**
 
-```bash
+> 📸 **CAPTURA 2 --- `docker ps`**
+
+Finalmente comprobé las imágenes disponibles:
+
+``` bash
 docker images
 ```
 
----
+**Resultado:**
 
-# 2. Descargar PostgreSQL
+> 📸 **CAPTURA 3 --- `docker images`**
 
-Vamos a utilizar la imagen oficial:
+------------------------------------------------------------------------
 
-```bash
+## 4. Descarga de la imagen PostgreSQL
+
+### Teoría
+
+Docker utiliza **imágenes** como plantillas a partir de las cuales se
+crean los contenedores.
+
+En este caso se utiliza la imagen oficial de PostgreSQL en su versión
+16.
+
+Para descargarla se utiliza `docker pull`.
+
+### Práctica
+
+Ejecuté:
+
+``` bash
 docker pull postgres:16
 ```
 
-Comprobamos que se ha descargado:
+**Resultado:**
 
-```bash
+> 📸 **CAPTURA 4 --- Descarga de `postgres:16`**
+
+Una vez finalizada la descarga, comprobé que la imagen estaba
+disponible:
+
+``` bash
 docker images
 ```
 
-Deberíamos encontrar algo parecido a:
+**Resultado:**
 
-```
-REPOSITORY   TAG
-postgres     16
-```
+> 📸 **CAPTURA 5 --- Imagen PostgreSQL**
 
-Aquí estamos utilizando dos comandos vistos en la clase:
+La presencia de `postgres` con la etiqueta `16` confirma que la imagen
+se ha descargado correctamente.
 
-```
-docker pull
-docker images
-```
+------------------------------------------------------------------------
 
----
+## 5. Creación del contenedor PostgreSQL
 
-# 3. Crear el contenedor PostgreSQL
+### Teoría
 
-Ejecutamos:
+Una imagen Docker es una plantilla, mientras que un **contenedor** es
+una instancia creada a partir de esa imagen.
 
-```bash
+Para crear el contenedor se utiliza `docker run`.
+
+En esta práctica se configura PostgreSQL mediante diferentes parámetros:
+
+-   `-d`: ejecuta el contenedor en segundo plano.
+-   `--name postgres-data`: asigna el nombre `postgres-data`.
+-   `-e POSTGRES_PASSWORD=curso123`: establece la contraseña del usuario
+    administrador.
+-   `-e POSTGRES_DB=empresa`: crea inicialmente la base de datos
+    `empresa`.
+-   `-p 5432:5432`: publica el puerto de PostgreSQL del contenedor en el
+    puerto 5432 del servidor.
+
+### Práctica
+
+Ejecuté:
+
+``` bash
 docker run -d --name postgres-data -e POSTGRES_PASSWORD=curso123 -e POSTGRES_DB=empresa -p 5432:5432 postgres:16
 ```
 
-Vamos a analizar el comando.
+**Resultado:**
 
-## `-d`
+> 📸 **CAPTURA 6 --- Creación del contenedor**
 
-```
--d
-```
+El contenedor queda creado con el nombre `postgres-data` y utilizando
+PostgreSQL 16.
 
-Ejecuta PostgreSQL en segundo plano.
+------------------------------------------------------------------------
 
-## `-name postgres-data`
+## 6. Comprobación del contenedor
 
-```
---name postgres-data
-```
+Para comprobar que PostgreSQL se está ejecutando correctamente utilicé:
 
-Asigna el nombre:
-
-```
-postgres-data
-```
-
-al contenedor.
-
-## `p 5432:5432`
-
-```
--p 5432:5432
-```
-
-Relaciona:
-
-```
-Puerto 5432 Ubuntu → Puerto 5432 PostgreSQL
-```
-
-## `e`
-
-La opción:
-
-```
--e
-```
-
-permite definir variables de entorno.
-
-En este caso:
-
-```bash
--e POSTGRES_PASSWORD=curso123
-```
-
-define la contraseña del usuario administrador de PostgreSQL.
-
-Y:
-
-```bash
--e POSTGRES_DB=empresa
-```
-
-hace que PostgreSQL cree inicialmente una base de datos llamada:
-
-```
-empresa
-```
-
----
-
-# 4. Comprobar que el contenedor está funcionando
-
-Ejecuta:
-
-```bash
+``` bash
 docker ps
 ```
 
-Deberíamos observar algo similar a:
+**Resultado:**
 
-```
-CONTAINER ID   IMAGE         PORTS                    NAMES
-abc123...      postgres:16   0.0.0.0:5432->5432/tcp   postgres-data
-```
+> 📸 **CAPTURA 7 --- Contenedor PostgreSQL funcionando**
 
-Ahora tenemos:
+En la columna de puertos se puede observar la publicación:
 
-```
-Ubuntu Server
-       |
-       | 5432
-       ↓
-Docker
-       |
-       ↓
-PostgreSQL
-       |
-       ↓
-Base de datos empresa
+``` text
+5432->5432
 ```
 
----
+Esto permite acceder al servicio PostgreSQL a través del puerto 5432 del
+servidor.
 
-# 5. Consultar los logs
+------------------------------------------------------------------------
 
-PostgreSQL tarda unos segundos en inicializarse.
+## 7. Comprobación de los logs
 
-Podemos observar el proceso con:
+### Teoría
 
-```bash
+Los logs permiten consultar los mensajes generados por un contenedor.
+
+En el caso de PostgreSQL son especialmente útiles para comprobar si el
+servicio se ha iniciado correctamente y está preparado para aceptar
+conexiones.
+
+### Práctica
+
+Ejecuté:
+
+``` bash
 docker logs postgres-data
 ```
 
-Entre los mensajes deberíamos terminar encontrando algo parecido a:
+**Resultado:**
 
-```
-database system is ready to accept connections
-```
+> 📸 **CAPTURA 8 --- Logs de PostgreSQL**
 
-También podemos seguir los logs en tiempo real:
+Entre los mensajes de inicialización se puede comprobar que PostgreSQL
+ha terminado de arrancar y está preparado para aceptar conexiones.
 
-```bash
-docker logs -f postgres-data
-```
+------------------------------------------------------------------------
 
-Para salir:
+## 8. Acceso a PostgreSQL
 
-```
-Ctrl + C
-```
+Para acceder directamente al servidor PostgreSQL desde el contenedor
+utilicé `docker exec`:
 
-El contenedor continuará funcionando.
-
----
-
-# 6. Entrar en PostgreSQL
-
-Ahora utilizamos `docker exec`.
-
-Ejecuta:
-
-```bash
+``` bash
 docker exec -it postgres-data psql -U postgres -d empresa
 ```
 
-Estamos haciendo lo siguiente:
+**Resultado:**
 
-```
-docker exec
-       ↓
-contenedor postgres-data
-       ↓
-ejecutar programa psql
-       ↓
-conectarse a BD empresa
-```
+> 📸 **CAPTURA 9 --- Acceso a PostgreSQL / prompt `empresa=#`**
 
-El prompt debería cambiar a algo parecido a:
+El prompt:
 
-```
+``` text
 empresa=#
 ```
 
-Ya estamos dentro de PostgreSQL.
+indica que la conexión se ha realizado correctamente y que ya es posible
+ejecutar instrucciones SQL.
 
----
+------------------------------------------------------------------------
 
-# 7. Crear una tabla de Staging
+## 9. Creación de la tabla de staging
 
-Dentro de PostgreSQL:
+### Teoría
 
-```sql
+Una tabla de **staging** sirve como zona intermedia para recibir datos
+procedentes de una fuente externa antes de realizar procesos posteriores
+de validación o transformación.
+
+En este caso la fuente será un archivo CSV con información de ventas.
+
+### Práctica
+
+Dentro de PostgreSQL creé la tabla:
+
+``` sql
 CREATE TABLE staging_ventas (
     id INTEGER,
     fecha DATE,
@@ -274,63 +274,46 @@ CREATE TABLE staging_ventas (
 );
 ```
 
-Comprobamos la tabla:
+**Resultado:**
 
-```sql
+> 📸 **CAPTURA 10 --- Creación de `staging_ventas`**
+
+Posteriormente comprobé su contenido:
+
+``` sql
 SELECT * FROM staging_ventas;
 ```
 
-Todavía estará vacía.
+**Resultado:**
 
-Salimos:
+> 📸 **CAPTURA 11 --- Tabla vacía**
 
-```
+La tabla aparece inicialmente vacía porque todavía no se han cargado los
+datos del CSV.
+
+Para salir de PostgreSQL:
+
+``` text
 \q
 ```
 
----
+------------------------------------------------------------------------
 
-# 8. Crear un pequeño dataset CSV
+## 10. Creación del archivo CSV
 
-Ahora estamos nuevamente en Ubuntu Server.
+### Teoría
 
-Vamos a crear un archivo de datos:
+El archivo CSV representa una fuente de datos externa. En un entorno
+real podría proceder de un sistema de ventas, una aplicación empresarial
+o cualquier otro sistema que genere información estructurada.
 
-```bash
-echo "id,fecha,producto,cantidad,precio" > ventas.csv
-```
+Para esta práctica se utiliza un pequeño dataset de ejemplo.
 
-Añadimos algunas ventas:
+### Práctica
 
-```bash
-echo "1,2026-09-01,Portatil,2,1200.00" >> ventas.csv
-```
+Creé el archivo `ventas.csv` con los siguientes datos:
 
-```bash
-echo "2,2026-09-01,Monitor,5,350.00" >> ventas.csv
-```
-
-```bash
-echo "3,2026-09-02,Teclado,10,75.00" >> ventas.csv
-```
-
-```bash
-echo "4,2026-09-02,Raton,15,35.00" >> ventas.csv
-```
-
-```bash
-echo "5,2026-09-03,Portatil,1,1350.00" >> ventas.csv
-```
-
-Visualizamos:
-
-```bash
-cat ventas.csv
-```
-
-Resultado:
-
-```
+``` text
 id,fecha,producto,cantidad,precio
 1,2026-09-01,Portatil,2,1200.00
 2,2026-09-01,Monitor,5,350.00
@@ -339,109 +322,140 @@ id,fecha,producto,cantidad,precio
 5,2026-09-03,Portatil,1,1350.00
 ```
 
-Aquí tenemos nuestro pequeño **dataset de origen**.
+Para comprobar el contenido utilicé:
 
----
+``` bash
+cat ventas.csv
+```
 
-# 9. Copiar el CSV al contenedor
+**Resultado:**
 
-Utiliza:
+> 📸 **CAPTURA 12 --- Contenido de `ventas.csv`**
 
-```bash
+------------------------------------------------------------------------
+
+## 11. Copia del CSV al contenedor
+
+### Teoría
+
+El comando `docker cp` permite copiar archivos entre el sistema
+anfitrión y un contenedor Docker.
+
+En este caso se utiliza para introducir el archivo CSV en el contenedor
+PostgreSQL.
+
+### Práctica
+
+Ejecuté:
+
+``` bash
 docker cp ventas.csv postgres-data:/tmp/ventas.csv
 ```
 
-El flujo es:
+Después comprobé que el archivo se encontraba dentro del contenedor:
 
-```
-Ubuntu Server
-ventas.csv
-     |
-     | docker cp
-     ↓
-Contenedor PostgreSQL
-/tmp/ventas.csv
-```
-
-Podemos comprobar que llegó:
-
-```bash
+``` bash
 docker exec postgres-data ls /tmp
 ```
 
-Debería aparecer:
+**Resultado:**
 
-```
-ventas.csv
-```
+> 📸 **CAPTURA 13 --- `ventas.csv` dentro del contenedor**
 
-También podemos visualizarlo desde fuera del contenedor:
+También comprobé directamente su contenido:
 
-```bash
+``` bash
 docker exec postgres-data cat /tmp/ventas.csv
 ```
 
----
+**Resultado:**
 
-# 10. Cargar el CSV en PostgreSQL
+> 📸 **CAPTURA 14 --- Contenido del CSV dentro del contenedor**
 
-Entramos nuevamente:
+------------------------------------------------------------------------
 
-```bash
+## 12. Carga de los datos en PostgreSQL
+
+Una vez que el CSV se encuentra dentro del contenedor, accedí nuevamente
+a PostgreSQL:
+
+``` bash
 docker exec -it postgres-data psql -U postgres -d empresa
 ```
 
-Ejecutamos:
+Posteriormente ejecuté:
 
-```sql
+``` sql
 COPY staging_ventas
 FROM '/tmp/ventas.csv'
 DELIMITER ','
 CSV HEADER;
 ```
 
-PostgreSQL debería indicar:
+**Resultado:**
 
-```
+> 📸 **CAPTURA 15 --- Resultado de `COPY`**
+
+El mensaje:
+
+``` text
 COPY 5
 ```
 
-Eso significa que ha cargado:
+indica que PostgreSQL ha cargado correctamente **5 registros** en la
+tabla `staging_ventas`.
 
-```
-5 filas
-```
+------------------------------------------------------------------------
 
----
+## 13. Validación de los datos
 
-# 11. Validar los datos
+### Teoría
 
-En Ingeniería de Datos no basta con cargar información.
+En un proceso de Ingeniería de Datos no es suficiente con cargar la
+información. Es necesario comprobar que los datos se han incorporado
+correctamente.
 
-Hay que comprobarla.
+Por este motivo se realizan diferentes consultas de validación.
 
-Ejecutamos:
+### Comprobación de los registros
 
-```sql
+``` sql
 SELECT * FROM staging_ventas;
 ```
 
-## Contar registros
+**Resultado:**
 
-```sql
+> 📸 **CAPTURA 16 --- Registros cargados**
+
+Se comprueba que los registros del CSV están presentes en la tabla.
+
+### Número de registros
+
+``` sql
 SELECT COUNT(*)
 FROM staging_ventas;
 ```
 
-Resultado esperado:
+**Resultado:**
 
-```
+> 📸 **CAPTURA 17 --- `COUNT(*)`**
+
+El resultado esperado para el dataset utilizado es:
+
+``` text
 5
 ```
 
-## Calcular ventas
+Por tanto, el número de registros coincide con los cinco registros
+existentes en el CSV de origen.
 
-```sql
+------------------------------------------------------------------------
+
+## 14. Consulta analítica
+
+Además de validar los datos, realicé una primera consulta de análisis:
+
+``` sql
 SELECT
     producto,
     SUM(cantidad * precio) AS importe_ventas
@@ -450,329 +464,294 @@ GROUP BY producto
 ORDER BY importe_ventas DESC;
 ```
 
-Ahora ya estamos realizando una pequeña transformación analítica:
+**Resultado:**
 
-```
-CSV
- ↓
-Staging
- ↓
-Validación
- ↓
-Agregación
-```
+> 📸 **CAPTURA 18 --- Consulta de ventas por producto**
 
----
+Esta consulta permite calcular el importe total de ventas agrupado por
+producto.
 
-# 12. Salir de PostgreSQL
+El proceso realizado hasta este punto puede representarse de la
+siguiente forma:
 
-```
-\q
-```
+**CSV → Staging → Validación → Agregación → Información analítica**
 
----
+------------------------------------------------------------------------
 
-# 13. Inspeccionar el contenedor
+## 15. Inspección del contenedor
 
-Utilizamos otro comando de la Clase 1:
+Una vez realizadas las operaciones sobre PostgreSQL, comprobé
+información interna del contenedor mediante:
 
-```bash
+``` bash
 docker inspect postgres-data
 ```
 
-Busca visualmente información relacionada con:
+**Resultado:**
 
-```
-IPAddress
-Ports
-State
-Image
-Name
-```
+> 📸 **CAPTURA 19 --- `docker inspect`**
 
----
+Este comando permite consultar diferentes parámetros de configuración
+del contenedor, como su estado, imagen, nombre y configuración de red.
 
-# 14. Consultar el puerto
+------------------------------------------------------------------------
 
-```bash
+## 16. Consulta del puerto
+
+Para comprobar la publicación del puerto utilicé:
+
+``` bash
 docker port postgres-data
 ```
 
-Deberíamos obtener algo parecido a:
+**Resultado:**
 
-```
-5432/tcp -> 0.0.0.0:5432
-```
+> 📸 **CAPTURA 20 --- `docker port`**
 
-Es decir:
+La salida permite comprobar que el puerto 5432 de PostgreSQL está
+publicado en el servidor.
 
-```
-PostgreSQL
-Container :5432
-      ↑
-      |
-Ubuntu :5432
-```
+------------------------------------------------------------------------
 
----
+## 17. Comprobación de recursos
 
-# 15. Consultar recursos utilizados
+Para observar los recursos utilizados por PostgreSQL ejecuté:
 
-Ejecuta:
-
-```bash
+``` bash
 docker stats postgres-data
 ```
 
-Podemos observar:
+**Resultado:**
 
-```
-CPU %
-MEM USAGE
-MEM %
-NET I/O
-```
+> 📸 **CAPTURA 21 --- `docker stats`**
 
-Para salir:
+Se pueden observar diferentes métricas, entre ellas:
 
-```
+-   CPU utilizada.
+-   Memoria utilizada.
+-   Porcentaje de memoria.
+-   Entrada y salida de red.
+
+Para salir de `docker stats`:
+
+``` text
 Ctrl + C
 ```
 
----
+------------------------------------------------------------------------
 
-# 16. Detener PostgreSQL
+## 18. Detener y volver a iniciar el contenedor
 
-Ejecuta:
+### Teoría
 
-```bash
+Docker permite detener un contenedor sin eliminarlo.
+
+Para detener PostgreSQL utilicé:
+
+``` bash
 docker stop postgres-data
 ```
 
-Comprobamos:
+Posteriormente comprobé los contenedores en ejecución:
 
-```bash
+``` bash
 docker ps
 ```
 
-Ya no aparecerá.
+**Resultado:**
 
-Pero si ejecutamos:
+> 📸 **CAPTURA 22 --- Contenedor detenido**
 
-```bash
+Aunque ya no aparece en `docker ps`, el contenedor continúa existiendo.
+Esto se puede comprobar mediante:
+
+``` bash
 docker ps -a
 ```
 
-seguirá existiendo:
+**Resultado:**
 
-```
-postgres-data
-```
+> 📸 **CAPTURA 23 --- Contenedor con estado `Exited`**
 
-con estado similar a:
+A continuación volví a iniciar el mismo contenedor:
 
-```
-Exited
-```
-
-> **Detener un contenedor no significa eliminarlo.**
-> 
-
----
-
-# 17. Volver a iniciar PostgreSQL
-
-Ejecuta:
-
-```bash
+``` bash
 docker start postgres-data
 ```
 
-Comprobamos:
+Y comprobé nuevamente su estado:
 
-```bash
+``` bash
 docker ps
 ```
 
-PostgreSQL vuelve a estar funcionando.
+**Resultado:**
 
----
+> 📸 **CAPTURA 24 --- Contenedor iniciado de nuevo**
 
-# 18. Comprobar si los datos siguen allí
+------------------------------------------------------------------------
 
-Ejecutamos:
+## 19. Comprobación de los datos después de reiniciar
 
-```bash
+Después de iniciar nuevamente el contenedor, accedí a PostgreSQL:
+
+``` bash
 docker exec -it postgres-data psql -U postgres -d empresa
 ```
 
-Y después:
+Y ejecuté:
 
-```sql
+``` sql
 SELECT * FROM staging_ventas;
 ```
 
-Los datos siguen presentes porque simplemente hemos detenido e iniciado **el mismo contenedor**.
+**Resultado:**
 
-Salimos:
+> 📸 **CAPTURA 25 --- Datos después de `docker start`**
 
-```
-\q
-```
+Los registros continúan disponibles porque se ha detenido y vuelto a
+iniciar **el mismo contenedor**.
 
-Esto refuerza la diferencia entre:
+Esto permite diferenciar entre:
 
-```
+``` text
 docker stop
       ↓
-contenedor permanece
-
+El contenedor permanece
+      ↓
 docker start
       ↓
-volvemos a utilizarlo
+Se vuelve a utilizar el mismo contenedor
 ```
 
----
+------------------------------------------------------------------------
 
-# 19. Reiniciar PostgreSQL
+## 20. Reinicio del contenedor
 
-Podemos hacerlo directamente:
+También comprobé el comando `docker restart`:
 
-```bash
+``` bash
 docker restart postgres-data
 ```
 
-Comprobamos:
+Después verifiqué nuevamente que PostgreSQL estaba activo:
 
-```bash
+``` bash
 docker ps
 ```
 
----
+**Resultado:**
 
-# 20. Eliminar el contenedor
+> 📸 **CAPTURA 26 --- `docker restart`**
 
-Primero:
+------------------------------------------------------------------------
 
-```bash
+## 21. Eliminación del contenedor
+
+Finalmente comprobé la diferencia entre detener un contenedor y
+eliminarlo.
+
+Primero lo detuve:
+
+``` bash
 docker stop postgres-data
 ```
 
-Después:
+Después lo eliminé:
 
-```bash
+``` bash
 docker rm postgres-data
 ```
 
-Comprobamos:
+Y comprobé los contenedores existentes:
 
-```bash
+``` bash
 docker ps -a
 ```
 
-`postgres-data` ya no existe.
+**Resultado:**
 
-Aquí aparece una lección importante para futuras clases:
+> 📸 **CAPTURA 27 --- Contenedor eliminado**
 
-> Los datos estaban almacenados dentro del contenedor. Al eliminar el contenedor, esos datos dejan de estar disponibles con él.
-> 
+Al eliminar el contenedor, ya no aparece `postgres-data`.
 
-Esto prepara el siguiente tema:
+Este paso permite comprender la importancia de utilizar **Docker
+Volumes** cuando necesitamos conservar los datos aunque eliminemos el
+contenedor.
 
-```
-Docker Volumes
-```
+------------------------------------------------------------------------
 
-porque allí aprenderemos cómo conseguir:
+## 22. Diferencia entre imagen y contenedor
 
-```
-Eliminar contenedor
-       ↓
+Aunque el contenedor se haya eliminado, la imagen de PostgreSQL puede
+continuar disponible.
 
-Datos sobreviven
-       ↓
+Para comprobarlo:
 
-Crear otro contenedor
-       ↓
-
-Recuperar los mismos datos
-```
-
----
-
-# 21. La imagen PostgreSQL todavía existe
-
-Aunque hayamos eliminado el contenedor:
-
-```bash
+``` bash
 docker images
 ```
 
-seguiremos teniendo:
+**Resultado:**
 
-```
-postgres:16
-```
+> 📸 **CAPTURA 28 --- Imagen `postgres:16`**
 
-Esto refuerza nuevamente:
+Esto demuestra que:
 
-```
-IMAGEN ≠ CONTENEDOR
-```
+**Imagen ≠ Contenedor**
 
-La imagen es la plantilla.
+La imagen funciona como una plantilla, mientras que el contenedor es una
+instancia creada a partir de dicha imagen.
 
-El contenedor era una instancia creada a partir de ella.
+------------------------------------------------------------------------
 
----
+## 23. Eliminación de la imagen
 
-# 22. Eliminar la imagen
+Como último paso de limpieza, eliminé la imagen:
 
-Si queremos limpiar completamente:
-
-```bash
+``` bash
 docker rmi postgres:16
 ```
 
-Comprobamos:
+Finalmente comprobé las imágenes disponibles:
 
-```bash
+``` bash
 docker images
 ```
 
----
+**Resultado:**
 
-# 23. Comandos de la Clase 1 utilizados
+> 📸 **CAPTURA 29 --- Imagen eliminada**
 
-Este laboratorio utiliza casi todos los comandos principales:
+------------------------------------------------------------------------
 
-| Comando | Uso dentro del laboratorio |
-| --- | --- |
-| `docker --version` | Comprobar instalación |
-| `docker pull` | Descargar PostgreSQL |
-| `docker images` | Ver la imagen |
-| `docker run` | Crear PostgreSQL |
-| `docker ps` | Ver PostgreSQL activo |
-| `docker ps -a` | Ver activo/detenido |
-| `docker logs` | Revisar inicialización |
-| `docker exec` | Ejecutar SQL dentro del contenedor |
-| `docker cp` | Introducir el CSV |
-| `docker inspect` | Examinar configuración |
-| `docker port` | Consultar publicación 5432 |
-| `docker stats` | Consultar recursos |
-| `docker stop` | Detener PostgreSQL |
-| `docker start` | Iniciarlo otra vez |
-| `docker restart` | Reiniciarlo |
-| `docker rm` | Eliminar el contenedor |
-| `docker rmi` | Eliminar la imagen |
+## 24. Comandos Docker utilizados
 
----
+  Comando              Función
+  -------------------- -------------------------------------------
+  `docker --version`   Comprobar la versión de Docker
+  `docker pull`        Descargar una imagen
+  `docker images`      Consultar las imágenes disponibles
+  `docker run`         Crear y ejecutar un contenedor
+  `docker ps`          Consultar contenedores activos
+  `docker ps -a`       Consultar todos los contenedores
+  `docker logs`        Consultar los logs
+  `docker exec`        Ejecutar comandos dentro de un contenedor
+  `docker cp`          Copiar archivos hacia/desde un contenedor
+  `docker inspect`     Consultar información del contenedor
+  `docker port`        Consultar los puertos publicados
+  `docker stats`       Consultar el consumo de recursos
+  `docker stop`        Detener un contenedor
+  `docker start`       Iniciar un contenedor detenido
+  `docker restart`     Reiniciar un contenedor
+  `docker rm`          Eliminar un contenedor
+  `docker rmi`         Eliminar una imagen
 
----
+------------------------------------------------------------------------
 
-# 25. Flujo completo del laboratorio
+## 25. Flujo completo del laboratorio
 
-```
+``` text
 ventas.csv
     │
     │ docker cp
@@ -794,13 +773,39 @@ ventas.csv
              │
              │ SQL
              ▼
-      Validación
+       Validación
              │
              ▼
-      Transformación
+       Transformación
              │
              ▼
        Datos analíticos
 ```
+
+------------------------------------------------------------------------
+
+## 26. Conclusión
+
+En esta práctica se ha realizado un flujo completo de trabajo con
+**Docker y PostgreSQL**, comenzando con la descarga de la imagen y
+terminando con la eliminación de los recursos utilizados.
+
+Durante el proceso se ha trabajado con la creación y gestión de
+contenedores, la publicación de puertos, la consulta de logs, la
+ejecución de comandos mediante `docker exec` y la transferencia de
+archivos mediante `docker cp`.
+
+Desde el punto de vista de Ingeniería de Datos, se ha realizado un
+pequeño proceso de tratamiento de datos partiendo de un archivo CSV como
+fuente de datos, introduciéndolo en una tabla de staging de PostgreSQL y
+realizando posteriormente consultas para validar y analizar la
+información.
+
+También se ha comprobado la diferencia entre **imagen y contenedor**,
+así como la diferencia entre detener un contenedor y eliminarlo.
+
+Finalmente, la práctica sirve como introducción al concepto de **Docker
+Volumes**, que permite conservar los datos independientemente del ciclo
+de vida del contenedor.
 
 ---
