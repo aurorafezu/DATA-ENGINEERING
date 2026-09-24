@@ -45,6 +45,7 @@ El entorno utilizado es:
 
 La conexión mediante SSH permite trabajar con el servidor Ubuntu desde la Terminal de Windows como si se estuviera trabajando directamente en él. A partir de ahí, se utilizan los comandos de Docker para descargar la imagen de PostgreSQL, crear el contenedor y realizar las diferentes operaciones de la práctica.
 
+![Imagen 1](IMG/1.png)
 
 ------------------------------------------------------------------------
 
@@ -69,10 +70,6 @@ Ejecuté el siguiente comando:
 docker --version
 ```
 
-**Resultado:**
-
-> 📸 **CAPTURA 1 --- Versión de Docker**
-
 La salida permite comprobar que Docker está instalado correctamente en
 el servidor.
 
@@ -83,10 +80,6 @@ ejecución:
 docker ps
 ```
 
-**Resultado:**
-
-> 📸 **CAPTURA 2 --- `docker ps`**
-
 Finalmente comprobé las imágenes disponibles:
 
 ``` bash
@@ -95,7 +88,7 @@ docker images
 
 **Resultado:**
 
-> 📸 **CAPTURA 3 --- `docker images`**
+> 📸 ![Imagen 2](IMG/2.png)
 
 ------------------------------------------------------------------------
 
@@ -119,10 +112,6 @@ Ejecuté:
 docker pull postgres:16
 ```
 
-**Resultado:**
-
-> 📸 **CAPTURA 4 --- Descarga de `postgres:16`**
-
 Una vez finalizada la descarga, comprobé que la imagen estaba
 disponible:
 
@@ -132,7 +121,7 @@ docker images
 
 **Resultado:**
 
-> 📸 **CAPTURA 5 --- Imagen PostgreSQL**
+> 📸 ![Imagen 3](IMG/3.png)
 
 La presencia de `postgres` con la etiqueta `16` confirma que la imagen
 se ha descargado correctamente.
@@ -169,7 +158,7 @@ docker run -d --name postgres-data -e POSTGRES_PASSWORD=curso123 -e POSTGRES_DB=
 
 **Resultado:**
 
-> 📸 **CAPTURA 6 --- Creación del contenedor**
+> 📸 📸 ![Imagen 4](IMG/4.png)
 
 El contenedor queda creado con el nombre `postgres-data` y utilizando
 PostgreSQL 16.
@@ -186,7 +175,7 @@ docker ps
 
 **Resultado:**
 
-> 📸 **CAPTURA 7 --- Contenedor PostgreSQL funcionando**
+> 📸 📸 ![Imagen 5](IMG/5.png)
 
 En la columna de puertos se puede observar la publicación:
 
@@ -219,7 +208,7 @@ docker logs postgres-data
 
 **Resultado:**
 
-> 📸 **CAPTURA 8 --- Logs de PostgreSQL**
+> 📸 📸 ![Imagen 6](IMG/6.png)
 
 Entre los mensajes de inicialización se puede comprobar que PostgreSQL
 ha terminado de arrancar y está preparado para aceptar conexiones.
@@ -237,13 +226,18 @@ docker exec -it postgres-data psql -U postgres -d empresa
 
 **Resultado:**
 
-> 📸 **CAPTURA 9 --- Acceso a PostgreSQL / prompt `empresa=#`**
+> 📸 ![Imagen 7](IMG/7.png)
 
 El prompt:
 
 ``` text
 empresa=#
 ```
+
+**Resultado:**
+
+> 📸 ![Imagen 8](IMG/8.png)
+
 
 indica que la conexión se ha realizado correctamente y que ya es posible
 ejecutar instrucciones SQL.
@@ -274,10 +268,6 @@ CREATE TABLE staging_ventas (
 );
 ```
 
-**Resultado:**
-
-> 📸 **CAPTURA 10 --- Creación de `staging_ventas`**
-
 Posteriormente comprobé su contenido:
 
 ``` sql
@@ -287,6 +277,9 @@ SELECT * FROM staging_ventas;
 **Resultado:**
 
 > 📸 **CAPTURA 11 --- Tabla vacía**
+> 📸 **CAPTURA 10 --- Creación de `staging_ventas`**
+![Imagen 9](IMG/9.png)
+
 
 La tabla aparece inicialmente vacía porque todavía no se han cargado los
 datos del CSV.
@@ -331,6 +324,9 @@ cat ventas.csv
 **Resultado:**
 
 > 📸 **CAPTURA 12 --- Contenido de `ventas.csv`**
+> 📸 **CAPTURA 10 --- Creación de `staging_ventas`**
+![Imagen 10](IMG/10.png)
+
 
 ------------------------------------------------------------------------
 
@@ -358,10 +354,6 @@ Después comprobé que el archivo se encontraba dentro del contenedor:
 docker exec postgres-data ls /tmp
 ```
 
-**Resultado:**
-
-> 📸 **CAPTURA 13 --- `ventas.csv` dentro del contenedor**
-
 También comprobé directamente su contenido:
 
 ``` bash
@@ -370,7 +362,9 @@ docker exec postgres-data cat /tmp/ventas.csv
 
 **Resultado:**
 
+> 📸 **CAPTURA 13 --- `ventas.csv` dentro del contenedor**
 > 📸 **CAPTURA 14 --- Contenido del CSV dentro del contenedor**
+![Imagen 11](IMG/11.png)
 
 ------------------------------------------------------------------------
 
@@ -395,6 +389,7 @@ CSV HEADER;
 **Resultado:**
 
 > 📸 **CAPTURA 15 --- Resultado de `COPY`**
+![Imagen 12](IMG/12.png)
 
 El mensaje:
 
@@ -423,10 +418,6 @@ Por este motivo se realizan diferentes consultas de validación.
 SELECT * FROM staging_ventas;
 ```
 
-**Resultado:**
-
-> 📸 **CAPTURA 16 --- Registros cargados**
-
 Se comprueba que los registros del CSV están presentes en la tabla.
 
 ### Número de registros
@@ -438,7 +429,9 @@ FROM staging_ventas;
 
 **Resultado:**
 
-> 📸 **CAPTURA 17 --- `COUNT(*)`**
+> 📸 **CAPTURA  --- Registros cargados**
+> 📸 **CAPTURA  --- `COUNT(*)`**
+![Imagen 13](IMG/13.png)
 
 El resultado esperado para el dataset utilizado es:
 
@@ -466,7 +459,9 @@ ORDER BY importe_ventas DESC;
 
 **Resultado:**
 
-> 📸 **CAPTURA 18 --- Consulta de ventas por producto**
+> 📸 **CAPTURA  --- Consulta de ventas por producto**
+ ![Imagen 14](IMG/14.png)
+
 
 Esta consulta permite calcular el importe total de ventas agrupado por
 producto.
@@ -490,6 +485,8 @@ docker inspect postgres-data
 **Resultado:**
 
 > 📸 **CAPTURA 19 --- `docker inspect`**
+![Imagen 15](IMG/15.png)
+> 
 
 Este comando permite consultar diferentes parámetros de configuración
 del contenedor, como su estado, imagen, nombre y configuración de red.
@@ -507,6 +504,7 @@ docker port postgres-data
 **Resultado:**
 
 > 📸 **CAPTURA 20 --- `docker port`**
+> ![Imagen 16](IMG/16.png)
 
 La salida permite comprobar que el puerto 5432 de PostgreSQL está
 publicado en el servidor.
@@ -524,6 +522,7 @@ docker stats postgres-data
 **Resultado:**
 
 > 📸 **CAPTURA 21 --- `docker stats`**
+![Imagen 17](IMG/17.png)
 
 Se pueden observar diferentes métricas, entre ellas:
 
@@ -558,9 +557,6 @@ Posteriormente comprobé los contenedores en ejecución:
 docker ps
 ```
 
-**Resultado:**
-
-> 📸 **CAPTURA 22 --- Contenedor detenido**
 
 Aunque ya no aparece en `docker ps`, el contenedor continúa existiendo.
 Esto se puede comprobar mediante:
@@ -571,7 +567,9 @@ docker ps -a
 
 **Resultado:**
 
-> 📸 **CAPTURA 23 --- Contenedor con estado `Exited`**
+📸 **CAPTURA  --- Contenedor detenido**
+📸 **CAPTURA  --- Contenedor con estado `Exited`**
+![Imagen 18](IMG/18.png)
 
 A continuación volví a iniciar el mismo contenedor:
 
@@ -587,7 +585,8 @@ docker ps
 
 **Resultado:**
 
-> 📸 **CAPTURA 24 --- Contenedor iniciado de nuevo**
+> 📸 **CAPTURA  --- Contenedor iniciado de nuevo**
+> ![Imagen 19](IMG/19.png)
 
 ------------------------------------------------------------------------
 
@@ -608,6 +607,7 @@ SELECT * FROM staging_ventas;
 **Resultado:**
 
 > 📸 **CAPTURA 25 --- Datos después de `docker start`**
+> ![Imagen 20](IMG/20.png)
 
 Los registros continúan disponibles porque se ha detenido y vuelto a
 iniciar **el mismo contenedor**.
@@ -643,6 +643,7 @@ docker ps
 **Resultado:**
 
 > 📸 **CAPTURA 26 --- `docker restart`**
+> > ![Imagen 21](IMG/21.png)
 
 ------------------------------------------------------------------------
 
@@ -672,6 +673,7 @@ docker ps -a
 **Resultado:**
 
 > 📸 **CAPTURA 27 --- Contenedor eliminado**
+> > ![Imagen 22](IMG/22.png)
 
 Al eliminar el contenedor, ya no aparece `postgres-data`.
 
@@ -695,6 +697,7 @@ docker images
 **Resultado:**
 
 > 📸 **CAPTURA 28 --- Imagen `postgres:16`**
+ ![Imagen 23](IMG/23.png)
 
 Esto demuestra que:
 
@@ -722,7 +725,8 @@ docker images
 **Resultado:**
 
 > 📸 **CAPTURA 29 --- Imagen eliminada**
-
+>  ![Imagen 23](IMG/23.png)
+> 
 ------------------------------------------------------------------------
 
 ## 24. Comandos Docker utilizados
